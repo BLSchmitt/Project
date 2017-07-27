@@ -1,6 +1,6 @@
 var apiai = require('apiai');
 
-var app = apiai("e6483d023e1a4ef2a63038636ea3ec3e");
+var app = apiai("3b66bd00e60a41a4b2c5ff780a1f1884");
 const bodyParser = require('body-parser');
 
 var express = require('express')
@@ -21,7 +21,7 @@ expressApp.post('/echo', function (req, res) {
     });
     
     var request = app.textRequest('', {
-        sessionId: 'aa25ee14-0efb-4292-9bdf-dccf69063db1'
+        sessionId: '4f330a33-a3a9-4167-b2b5-d04eaa86d8b5'
     });
     
     request.on('response', function(response) {
