@@ -1,24 +1,42 @@
+'use strict';
+
 var apiai = require('apiai');
  
 var app = apiai("199651c380d041f3bca8829faf829f1c");
+const bodyParser = require('body-parser');
  
-var request = app.textRequest('', {
-    sessionId: '4f330a33-a3a9-4167-b2b5-d04eaa86d8b5'
-});
- 
- 
- 
- 
-request.on('response', function(response) {
-    console.log(response);
-});
- 
-request.on('error', function(error) {
-    console.log(error);
-});
- 
-request.end();
+var express = require('express')
+var expressApp = express()
 
+expressApp.use(bodyParser.urlencoded({
+    extended: true
+}));
+expressApp.use(bodyParser.json());
+// expressApp.post('/PATH', function (request, response) {
+expressApp.post('/', function (req, res) {
+ 
+
+
+
+ var request = app.textRequest('', {
+     sessionId: '4f330a33-a3a9-4167-b2b5-d04eaa86d8b5'
+ });
+
+
+
+
+ request.on('response', function(response) {
+     console.log(response);
+ });
+
+ request.on('error', function(error) {
+     console.log(error);
+ });
+
+ request.end();
+
+});
+ 
 var server = expressApp.listen(process.env.PORT || 5000, function () {
   var port = server.address().port;
   console.log("Express is working on port " + port);
