@@ -15,14 +15,16 @@ expressApp.use(bodyParser.json());
 // expressApp.post('/PATH', function (request, response) {
 expressApp.post('/', function (req, res) {
     var theData = req.body.result.resolvedQuery;
-   // var textOTW = req.body.parameters.name.value;
+   // var textOTW = req.body.parameters.value;
     var theSpeech = "I'm so geat !!"
     var testSpeech = "Best answer ever, Krom !"
+    
     return res.json({
         speech: testSpeech,
         displayText: "do we care about this one ?",
         source: 'First_ChatBot',
-        data: theData
+        data: theData,
+        followupEvent: 'event_OTD_test'
     });
 
     var request = app.textRequest('', {
