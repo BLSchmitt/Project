@@ -20,10 +20,10 @@ expressApp.post('/', function (req, res) {
     var testSpeech = "Best answer ever, Krom !"
     
     return res.json({
-        speech: testSpeech,
-        displayText: "do we care about this one ?",
-        source: 'First_ChatBot',
-        data: theData,
+        "speech": "Best answer ever, Krom !",
+        "displayText": "do we care about this one ?",
+        "source": 'First_ChatBot',
+        "data": theData,
         followupEvent: {
            Machin: "event_OTD_test",
             data: {
