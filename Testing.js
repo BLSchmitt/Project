@@ -12,7 +12,8 @@ expressApp.use(bodyParser.urlencoded({
     extended: true
 }));
 expressApp.use(bodyParser.json());
-expressApp.post('/PATH', function (request, response) {
+
+// Comment   expressApp.post('/PATH', function (request, response) {
 
 expressApp.post('/', function (req, res) {
     var theData = req.body.result.resolvedQuery;
