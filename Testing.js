@@ -25,9 +25,9 @@ expressApp.post('/', function (req, res) {
         source: 'First_ChatBot',
         data: theData,
         followupEvent: {
-           "Machin": "event_OTD_test",
-            "data": {
-               "truc":"Wazaaa"
+           Machin: "event_OTD_test",
+            data: {
+               truc:"Wazaaa"
                     }
        }
     });
