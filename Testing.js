@@ -24,12 +24,12 @@ expressApp.post('/', function (req, res) {
         "displayText": "do we care about this one ?",
         "source": 'First_ChatBot',
         "data": theData,
-        followupEvent: {
-           Machin: "event_OTD_test",
-            data: {
-               truc:"Wazaaa"
-                    }
-       }
+        "followupEvent": {
+             "name": "<event_OTD_test>",
+             "data": {
+                     "<truc>":"<waza>"
+              }
+        }
     });
 
     var request = app.textRequest('', {
