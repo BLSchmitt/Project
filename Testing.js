@@ -14,13 +14,13 @@ expressApp.use(bodyParser.urlencoded({
 expressApp.use(bodyParser.json());
 // expressApp.post('/PATH', function (request, response) {
 expressApp.post('/', function (req, res) {
-    var data = req.body.result.resolvedQuery;
-    var speech = "I'm so geat !!"
+    var theData = req.body.result.resolvedQuery;
+    var theSpeech = "I'm so geat !!"
     return res.json({
-        speech: data,
-        displayText: speech,
+        speech: theSpeech,
+        displayText: theSpeech,
         source: 'First_ChatBot',
-        data: data
+        data: theData
     });
 
     var request = app.textRequest('', {
