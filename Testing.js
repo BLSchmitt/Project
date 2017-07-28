@@ -11,9 +11,11 @@ var expressApp = express()
 expressApp.use(bodyParser.urlencoded({
     extended: true
 }));
-expressApp.use(bodyParser.json());
-// expressApp.post('/PATH', function (request, response) {
+
 /*
+expressApp.use(bodyParser.json());
+expressApp.post('/PATH', function (request, response) {
+
 expressApp.post('/', function (req, res) {
     var theData = req.body.result.resolvedQuery;
    // var textOTW = req.body.parameters.value;
