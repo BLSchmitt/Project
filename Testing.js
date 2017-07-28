@@ -3,6 +3,7 @@
 var apiai = require('apiai');
  
 var app = apiai("199651c380d041f3bca8829faf829f1c");
+
 const bodyParser = require('body-parser');
  
 var express = require('express')
@@ -11,6 +12,9 @@ var expressApp = express()
 expressApp.use(bodyParser.urlencoded({
     extended: true
 }));
+
+/*
+
 expressApp.use(bodyParser.json());
 
 // Comment   expressApp.post('/PATH', function (request, response) {
@@ -33,9 +37,9 @@ expressApp.post('/', function (req, res) {
                      "truc": theData
               }
         }
-     */
+  //*/
     });
-
+/*
     var request = app.textRequest('', {
         sessionId: '4f330a33-a3a9-4167-b2b5-d04eaa86d8b5'
     });
@@ -54,6 +58,32 @@ expressApp.post('/', function (req, res) {
     request.end();
 
 });
+
+//*/
+
+
+var event = {
+    name: "event_OTD_test",
+    data: {
+        truc: "Waaazzaaaaa",
+    }
+};
+
+var options = {
+    sessionId: '4f330a33-a3a9-4167-b2b5-d04eaa86d8b5'
+};
+
+var request = app.eventRequest(event, options);
+
+request.on('response', function(response) {
+    console.log(util.inspect(response, false, null));
+});
+
+request.on('error', function(error) {
+    console.log(error);
+});
+
+request.end();
 
 
 
