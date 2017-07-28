@@ -18,7 +18,7 @@ expressApp.post('/', function (req, res) {
     var textOTW = req.body.parameters.name.value;
     var theSpeech = "I'm so geat !!"
     return res.json({
-        speech: "I worked " + textOTW,
+        speech: textOTW,
         displayText: "do we care about this one ?",
         source: 'First_ChatBot',
         data: theData
