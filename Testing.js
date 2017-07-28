@@ -15,9 +15,10 @@ expressApp.use(bodyParser.json());
 // expressApp.post('/PATH', function (request, response) {
 expressApp.post('/', function (req, res) {
     var theData = req.body.result.resolvedQuery;
+    var textOTW = req.body.parameters.name.value;
     var theSpeech = "I'm so geat !!"
     return res.json({
-        speech: theSpeech,
+        speech: "I worked " + textOTW,
         displayText: "do we care about this one ?",
         source: 'First_ChatBot',
         data: theData
