@@ -27,7 +27,7 @@ expressApp.post('/', function (req, res) {
         "followupEvent": {
              "name": "event_OTD_test",
              "data": {
-                     "<truc>":"<waza>"
+                     "truc":"waza"
               }
         }
     });
