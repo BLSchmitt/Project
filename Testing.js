@@ -21,7 +21,7 @@ expressApp.post('/', function (req, res) {
     var testSpeech = "Best answer ever, Krom !"
     
     return res.json({
-        "speech": "Best answer ever, Krom !",
+        "speech": theSpeech,
         "displayText": "do we care about this one ?",
         "source": 'First_ChatBot',
         "data": theData,
