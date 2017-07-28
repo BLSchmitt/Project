@@ -20,14 +20,14 @@ expressApp.post('/', function (req, res) {
     var testSpeech = "Best answer ever, Krom !"
     
     return res.json({
-        "speech": "Best answer ever, Krom !",
-        "displayText": "do we care about this one ?",
+       // "speech": "Best answer ever, Krom !",
+       // "displayText": "do we care about this one ?",
         "source": 'First_ChatBot',
-        "data": theData,
+        //"data": theData,
         "followupEvent": {
              "name": "event_OTD_test",
              "data": {
-                     "truc":"waza"
+                     "truc": theData
               }
         }
     });
