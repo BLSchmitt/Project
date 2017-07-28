@@ -15,7 +15,7 @@ expressApp.use(bodyParser.json());
 // expressApp.post('/PATH', function (request, response) {
 expressApp.post('/', function (req, res) {
     var theData = req.body.result.resolvedQuery;
-    var textOTW = req.body.parameters.name.value;
+   // var textOTW = req.body.parameters.name.value;
     var theSpeech = "I'm so geat !!"
     var testSpeech = "Best answer ever, Krom !"
     return res.json({
