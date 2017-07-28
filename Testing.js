@@ -11,8 +11,6 @@ var expressApp = express()
 expressApp.use(bodyParser.urlencoded({
     extended: true
 }));
-
-/*
 expressApp.use(bodyParser.json());
 expressApp.post('/PATH', function (request, response) {
 
@@ -23,16 +21,18 @@ expressApp.post('/', function (req, res) {
     var testSpeech = "Best answer ever, Krom !"
     
     return res.json({
-       // "speech": "Best answer ever, Krom !",
-       // "displayText": "do we care about this one ?",
+        "speech": "Best answer ever, Krom !",
+        "displayText": "do we care about this one ?",
         "source": 'First_ChatBot',
-        //"data": theData,
+        "data": theData,
+     /*
         "followupEvent": {
              "name": "event_OTD_test",
              "data": {
                      "truc": theData
               }
         }
+     */
     });
 
     var request = app.textRequest('', {
@@ -54,30 +54,6 @@ expressApp.post('/', function (req, res) {
 
 });
 
-*/
-var event = {
-    name: "event_OTD_test",
-    data: {
-        truc: "Machin",
-    }
-};
-
-
-var options = {
-    sessionId: '4f330a33-a3a9-4167-b2b5-d04eaa86d8b5'
-};
-
-var request = app.eventRequest(event, options);
-
-request.on('response', function(response) {
-    console.log(util.inspect(response, false, null));
-});
-
-request.on('error', function(error) {
-    console.log(error);
-});
-
-request.end();
 
 
 var server = expressApp.listen(process.env.PORT || 5000, function () {
