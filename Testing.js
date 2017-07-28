@@ -76,7 +76,7 @@ var options = {
 var request = app.eventRequest(event, options);
 
 request.on('response', function(response) {
-    console.log(util.inspect(response, false, null));
+    console.log(response);
 });
 
 request.on('error', function(error) {
