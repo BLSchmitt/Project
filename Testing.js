@@ -25,7 +25,7 @@ expressApp.post('/', function (req, res) {
         "source": 'First_ChatBot',
         "data": theData,
         "followupEvent": {
-             "name": "<event_OTD_test>",
+             "name": "event_OTD_test",
              "data": {
                      "<truc>":"<waza>"
               }
