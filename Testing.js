@@ -25,12 +25,17 @@ expressApp.post('/', function (req, res) {
     var theSpeech = "I'm so geat !!"
     var testSpeech = "Best answer ever, Krom !"
     
+    
+    
     return res.json({
         "speech": testSpeech,
         "displayText": "do we care about this one ?",
         "source": 'First_ChatBot',
         "data": theData,
-    //*
+    /*
+    // that how we call an event.
+    // data from multiple event can be open to be fill at the same time.
+    
         "followupEvent": {
              "name": "event_OTD_test",
              "data": {
@@ -64,6 +69,7 @@ expressApp.post('/', function (req, res) {
 //*/
 
  /*
+ // that doesn't work, I let it here just in case
 var event = {
     name: "event_OTD_test",
     data: {
