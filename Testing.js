@@ -33,7 +33,7 @@ expressApp.post('/', function (req, res) {
 	
 	
 //*
-   if (theNameS != "lalalilalalou"){
+   if (theNameS != "\"lalalilalalou\""){
 	return res.json({
 		"speech": testSpeech,
 		"displayText": "do we care about this one ?",
