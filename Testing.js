@@ -33,17 +33,8 @@ expressApp.post('/', function (req, res) {
 	
 	
 //*
-// à décommenter, juste pour test si c'est en haut le pb
-    if (theNameS != ""){
-    	return res.json({
-		"speech": theSpeech,
-       		"displayText": "do we care about this one ?",
-       	 	"source": 'First_ChatBot',
-        	"data": theData,	
-			
-		)};
-    }
-    else{
+
+
 	return res.json({
 		"speech": testSpeech,
 		"displayText": "do we care about this one ?",
@@ -63,7 +54,7 @@ expressApp.post('/', function (req, res) {
 			
 			
 	});
-    }
+    
  
 	
       //*/
