@@ -27,7 +27,9 @@ expressApp.post('/', function (req, res) {
     
     var theName = req.body.result.parameters.name;
     console.log("le name : " + theName);
-	
+/*	
+
+// à décommenter, juste pour test si c'est en haut le pb
     if (theName != ""){
     	return res.json({
 			"speech": theSpeech,
@@ -56,16 +58,11 @@ expressApp.post('/', function (req, res) {
 		  //*/
 		});
 	}
-    
-	if(theName == Whattt){
-		return res.json({
-			"speech": theSpeech,
-       		"displayText": "do we care about this one ?",
-       	 	"source": 'First_ChatBot',
-        	"data": theData,	
-			
-		)};
-	}
+    */
+
+
+
+
 	
       //*/
 //*
