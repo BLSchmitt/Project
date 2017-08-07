@@ -71,7 +71,7 @@ var event = {
 };
 
 var options = {
-    sessionId: '4f330a33-a3a9-4167-b2b5-d04eaa86d8b5'
+    sessionId: 'e5c6eb93-3255-4640-b48f-bfb04298b74e'
 };
 
 var request = app.eventRequest(event, options);
