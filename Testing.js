@@ -28,6 +28,16 @@ expressApp.post('/', function (req, res) {
     var theName = req.body.result.parameters.name;
     console.log("le name : " + theName);
 
+    if (theName != "yakakiki"){
+    	"speech": testSpeech,
+	"displayText": "do we care about this one ?",
+	"source": 'First_ChatBot',
+	"data": theData
+    }
+	
+	
+	
+	
 /*
 // à décommenter, juste pour test si c'est en haut le pb
     if (theName != ""){
