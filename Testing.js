@@ -30,14 +30,13 @@ expressApp.post('/', function (req, res) {
     
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
-    
 	
 	
-/*
+//*
 // à décommenter, juste pour test si c'est en haut le pb
-    if (theName != ""){
+    if (theNameS != ""){
     	return res.json({
-			"speech": theSpeech,
+		"speech": theSpeech,
        		"displayText": "do we care about this one ?",
        	 	"source": 'First_ChatBot',
         	"data": theData,	
@@ -45,12 +44,12 @@ expressApp.post('/', function (req, res) {
 		)};
     }
     else{
-		return res.json({
-			"speech": testSpeech,
-			"displayText": "do we care about this one ?",
-			"source": 'First_ChatBot',
-			"data": theData,
-		/*
+	return res.json({
+		"speech": testSpeech,
+		"displayText": "do we care about this one ?",
+		"source": 'First_ChatBot',
+		"data": theData,
+	/*
 		// that how we call an event.
 		// data from multiple event can be open to be fill at the same time.
 
@@ -63,12 +62,9 @@ expressApp.post('/', function (req, res) {
 		  //*/
 			
 			
-		//});}
+	});
+    }
  
-
-
-
-
 	
       //*/
 //*
