@@ -27,8 +27,8 @@ expressApp.post('/', function (req, res) {
     
     var theName = req.body.result.parameters.name;
     console.log("le name : " + theName);
-/*	
 
+/*
 // à décommenter, juste pour test si c'est en haut le pb
     if (theName != ""){
     	return res.json({
@@ -56,9 +56,10 @@ expressApp.post('/', function (req, res) {
 				  }
 			}
 		  //*/
-		});
-	}
-    */
+			
+			
+		//});}
+ 
 
 
 
@@ -117,5 +118,5 @@ request.end();
 var server = expressApp.listen(process.env.PORT || 5000, function () {
   var port = server.address().port;
   console.log("Express is working on port " + port);
-  console.log("Fin du programme, le name : " + theName);
+  console.log("Fin du programme ");
 });
