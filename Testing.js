@@ -26,7 +26,8 @@ expressApp.post('/', function (req, res) {
     var testSpeech = "Best answer ever, Krom !"
     
     var theName = req.body.result.parameters.name;
-    
+    console.log("le name : " + theName);
+	
     if (theName != ""){
     	return res.json({
 			"speech": theSpeech,
@@ -56,6 +57,16 @@ expressApp.post('/', function (req, res) {
 		});
 	}
     
+	if(theName == Whattt){
+		return res.json({
+			"speech": theSpeech,
+       		"displayText": "do we care about this one ?",
+       	 	"source": 'First_ChatBot',
+        	"data": theData,	
+			
+		)};
+	}
+	
       //*/
 //*
     var request = app.textRequest('', {
@@ -109,5 +120,5 @@ request.end();
 var server = expressApp.listen(process.env.PORT || 5000, function () {
   var port = server.address().port;
   console.log("Express is working on port " + port);
-  console.log("Fin du programme, ça a marché jusque là");
+  console.log("Fin du programme, le name : " + theName);
 });
