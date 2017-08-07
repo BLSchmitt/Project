@@ -27,15 +27,10 @@ expressApp.post('/', function (req, res) {
     
     var theName = req.body.result.parameters.name;
     console.log("le name : " + theName);
-
-    if (theName != "yakakiki"){
-    	"speech": testSpeech,
-	"displayText": "do we care about this one ?",
-	"source": 'First_ChatBot',
-	"data": theData
-    }
-	
-	
+    
+    var theNameS = JSON.stringify(theName);
+    console.log(theNameS);
+    
 	
 	
 /*
