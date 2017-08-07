@@ -2,7 +2,7 @@
 
 var apiai = require('apiai');
  
-var app = apiai("199651c380d041f3bca8829faf829f1c");
+var app = apiai("7941c76e84bf4d32989d3cd5b2555576");
 
 const bodyParser = require('body-parser');
  
