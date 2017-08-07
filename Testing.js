@@ -25,25 +25,36 @@ expressApp.post('/', function (req, res) {
     var theSpeech = "I'm so geat !!"
     var testSpeech = "Best answer ever, Krom !"
     
+    var theName = req.body.result.parameters.name;
     
-    
-    return res.json({
-        "speech": testSpeech,
-        "displayText": "do we care about this one ?",
-        "source": 'First_ChatBot',
-        "data": theData,
-    /*
-    // that how we call an event.
-    // data from multiple event can be open to be fill at the same time.
-    
-        "followupEvent": {
-             "name": "event_OTD_test",
-             "data": {
-                     "truc": theData
-              }
-        }
-      //*/
-    });
+    if (theName != ""){
+    	return res.json({
+			"speech": theSpeech,
+       		"displayText": "do we care about this one ?",
+       	 	"source": 'First_ChatBot',
+        	"data": theData,	
+			
+		)};
+    }
+    else{
+		return res.json({
+			"speech": testSpeech,
+			"displayText": "do we care about this one ?",
+			"source": 'First_ChatBot',
+			"data": theData,
+		/*
+		// that how we call an event.
+		// data from multiple event can be open to be fill at the same time.
+
+			"followupEvent": {
+				 "name": "event_OTD_test",
+				 "data": {
+						 "truc": theData
+				  }
+			}
+		  //*/
+		});
+	}
     
       //*/
 //*
