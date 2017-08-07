@@ -13,7 +13,7 @@ expressApp.use(bodyParser.urlencoded({
     extended: true
 }));
 
-/*
+//*
 
 expressApp.use(bodyParser.json());
 
@@ -40,7 +40,7 @@ expressApp.post('/', function (req, res) {
     });
     
       //*/
-/*
+//*
     var request = app.textRequest('', {
         sessionId: '4f330a33-a3a9-4167-b2b5-d04eaa86d8b5'
     });
@@ -62,7 +62,7 @@ expressApp.post('/', function (req, res) {
 
 //*/
 
-
+ /*
 var event = {
     name: "event_OTD_test",
     data: {
@@ -85,7 +85,7 @@ request.on('error', function(error) {
 });
 
 request.end();
-
+*/
 
 
 var server = expressApp.listen(process.env.PORT || 5000, function () {
