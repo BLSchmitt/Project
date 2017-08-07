@@ -6,8 +6,8 @@ var app = apiai("199651c380d041f3bca8829faf829f1c");
 
 const bodyParser = require('body-parser');
  
-var express = require('express')
-var expressApp = express()
+var express = require('express');
+var expressApp = express();
 
 expressApp.use(bodyParser.urlencoded({
     extended: true
@@ -37,8 +37,9 @@ expressApp.post('/', function (req, res) {
                      "truc": theData
               }
         }
-  //*/
     });
+    
+      //*/
 /*
     var request = app.textRequest('', {
         sessionId: '4f330a33-a3a9-4167-b2b5-d04eaa86d8b5'
