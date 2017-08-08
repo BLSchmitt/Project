@@ -39,7 +39,18 @@ expressApp.post('/', function (req, res) {
 		"displayText": "do we care about this one ?",
 		"source": 'First_ChatBot',
 		"data": theData,
-			
+		"contextOut": [
+			{
+				"name":"naming_test_dialog_context",
+				"lifespan":2,
+				"parameters":
+				{
+					"given-name":"Rome"
+				}
+			}
+		]
+		
+		
 		/*
 		// that how we call an event.
 		// data from multiple event can be open to be fill at the same time.
