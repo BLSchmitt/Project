@@ -41,7 +41,7 @@ expressApp.post('/', function (req, res) {
 		"data": theData,
 		"contextOut": [
 			{
-				"name":"naming_test_dialog_context",
+				"name":"un_autre_context",
 				"lifespan":2,
 				"parameters":
 				{
