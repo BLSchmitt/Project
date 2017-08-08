@@ -39,11 +39,7 @@ expressApp.post('/', function (req, res) {
 		"displayText": "do we care about this one ?",
 		"source": 'First_ChatBot',
 		"data": theData,
-		"parameters":{
-			"krom":theNameS,
-			"name":theNameS,
-			"given-name":theNameS
-		}
+
 			
 		/*
 		// that how we call an event.
@@ -74,7 +70,11 @@ expressApp.post('/', function (req, res) {
 //*
     var request = app.textRequest('', {
         sessionId: 'e5c6eb93-3255-4640-b48f-bfb04298b74e'
-	 
+	 "parameters":{
+		"krom":theNameS,
+		"name":theNameS,
+		"given-name":theNameS
+	}
     });
 
 
