@@ -39,6 +39,7 @@ expressApp.post('/', function (req, res) {
 		"displayText": "do we care about this one ?",
 		"source": 'First_ChatBot',
 		"data": theData,
+		"given-name": theNameS ,
 
 			
 		/*
