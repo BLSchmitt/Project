@@ -70,16 +70,7 @@ expressApp.post('/', function (req, res) {
 //*
     var request = app.textRequest('', {
         sessionId: 'e5c6eb93-3255-4640-b48f-bfb04298b74e'
-	contexts: 
-	[
-		{
-			name: "naming_test_dialog_context",
-			parameters: {
-				"krom": theNameS,
-				"given-name": theNameS
-			}
-        }
-    ]
+	 
     });
 
 
