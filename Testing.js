@@ -39,9 +39,7 @@ expressApp.post('/', function (req, res) {
 		"displayText": "do we care about this one ?",
 		"source": 'First_ChatBot',
 		"data": theData,
-		"parameters": {
-			"given-name": theNameS
-		}
+		req.body.result.parameters.given-name = theName
 
 		/*
 		// that how we call an event.
