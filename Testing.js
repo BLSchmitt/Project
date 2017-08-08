@@ -75,8 +75,8 @@ expressApp.post('/', function (req, res) {
 		{
 			name: "naming_test_dialog_context",
 			parameters: {
-				"krom": theNameS
-				"given-name": theName,
+				"krom": theNameS,
+				"given-name": theNameS
 			}
         }
     ]
