@@ -39,15 +39,7 @@ expressApp.post('/', function (req, res) {
 		"displayText": "do we care about this one ?",
 		"source": 'First_ChatBot',
 		"data": theData,
-		"contexts": [
-		      {
-			"name": "naming_test_dialog_context",
-			"parameters": {
-				"given-name": theNameS
-
-				}
-		     }
-		];
+		
 			
 		/*
 		// that how we call an event.
