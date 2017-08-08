@@ -31,8 +31,21 @@ expressApp.post('/', function (req, res) {
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
 	
+	//*
+	// that how we call an event.
+	// data from multiple event can be open to be fill at the same time.
+
+	"followupEvent": {
+			 "name": "event_OTD_test",
+			 // that doesn't work i don't know why now 08/08/2017
+			 "data": {
+					 "truc": theSpeech
+			  }
+	}
+	  //*/
 	
-//*
+	
+/*
    if (theNameS != "\"\""){
 	return res.json({
 		"speech": testSpeech,
@@ -50,20 +63,6 @@ expressApp.post('/', function (req, res) {
 			}
 		]
 		
-		
-		/*
-		// that how we call an event.
-		// data from multiple event can be open to be fill at the same time.
-
-			"followupEvent": {
-				 "name": "event_OTD_test",
-				 // that doesn't work i don't know why now 08/08/2017
-				 "data": {
-						 "truc": theData
-				  }
-			}
-		  //*/
-			
 			
 	});
    }
@@ -75,8 +74,8 @@ expressApp.post('/', function (req, res) {
 			"data": theData,
 	   });
    };
-	
       //*/
+	
 //*
     var request = app.textRequest('', {
         sessionId: 'e5c6eb93-3255-4640-b48f-bfb04298b74e'
