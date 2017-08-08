@@ -41,11 +41,9 @@ expressApp.post('/', function (req, res) {
 		"data": theData,
 		"contextOut": [
 			{
-				"name":"un_autre_context",
-				"lifespan":2,
 				"parameters":
 				{
-					"given-name":"Rome"
+					"TestTest":"Rome"
 				}
 			}
 		]
