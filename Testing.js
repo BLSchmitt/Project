@@ -28,6 +28,9 @@ expressApp.post('/', function (req, res) {
     var theName = req.body.result.parameters.name;
     console.log("le name : " + theName);
     
+	var theKrom = req.body.result.parameters.krom;
+	console.log("le krom : " + theKrom);
+	
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
 	
