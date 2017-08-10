@@ -56,7 +56,7 @@ expressApp.post('/', function (req, res) {
 		//console.log("le tableau d'objet " + req.body.metadate.executionSequence[0]);
 	}
 	
-	console.log("and here ?);
+	console.log("and here ?");
 	
 	
 	
