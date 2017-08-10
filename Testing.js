@@ -34,7 +34,8 @@ expressApp.post('/', function (req, res) {
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
 	
-	console.log("ici le nom du test tableau " + req.body.result.contexts[0].name);
+	// using array of objects
+	//console.log("ici le nom du test tableau " + req.body.result.contexts[0].name);
 	
 	if(req.body.result.action == "Best_Action_Ever"){
 		
@@ -42,7 +43,6 @@ expressApp.post('/', function (req, res) {
 		console.log("Mrwwlwlwlwlwl " + req.body.result.metadata);
 		console.log("test metadata object " + req.body.result.metadata.intentId);
 		console.log("Mrrrr " + req.body.result.metadata.executionSequence);
-		console.log("Mrrrr 22" + req.body.result.metadata.executionSequence[0]);
 		
 		
 		if(req.body.result.metadata.executionSequence != undefined){
@@ -156,6 +156,21 @@ request.on('error', function(error) {
 });
 
 request.end();
+*/
+
+// just in case
+/*
+ var data = req.body.result.resolvedQuery;
+    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+	
+    
+    return res.json({
+        speech: data,
+        displayText: data,
+        source: 'test_2_chatbot',
+        data: data
+    });
+   
 */
 
 
