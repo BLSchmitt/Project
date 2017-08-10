@@ -39,7 +39,7 @@ expressApp.post('/', function (req, res) {
 		console.log("I get here, juste the next if ...");
 		console.log("mwhaha" + req.body.result.metadata);
 		
-		if(req.body.result.metadata.executionSequence[0].action == "\"heroku_code_test\""){
+		if(req.body.result.metadata.executionSequence != undefined){
 			console.log("Yataaaa, test completed");
 			//console.log("le tableau d'objet " + req.body.metadate.executionSequence[0]);
 		}
