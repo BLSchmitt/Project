@@ -34,6 +34,8 @@ expressApp.post('/', function (req, res) {
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
 	
+	console.log("ici le nom du test tableau " + req.body.result.contexts[0].name);
+	
 	if(req.body.result.action == "Best_Action_Ever"){
 		
 		console.log("I get here, juste the next if ...");
