@@ -37,7 +37,8 @@ expressApp.post('/', function (req, res) {
 	if(req.body.result.action == "Best_Action_Ever"){
 		
 		console.log("I get here, juste the next if ...");
-	
+		console.log("mwhaha" + req.body);
+		
 		if(req.body.metadata.executionSequence[0].action == "\"heroku_code_test\""){
 			console.log("Yataaaa, test completed");
 			//console.log("le tableau d'objet " + req.body.metadate.executionSequence[0]);
