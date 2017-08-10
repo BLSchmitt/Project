@@ -34,6 +34,11 @@ expressApp.post('/', function (req, res) {
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
 	
+	var theActionTriggering = req.body.metadata.executionSequence.action;
+	console.logg("l'action original : " + theActionTriggering);
+	
+	
+	
 	//*
 	// that how we call an event.
 	// data from multiple event can be open to be fill at the same time.
