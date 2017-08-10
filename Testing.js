@@ -38,7 +38,10 @@ expressApp.post('/', function (req, res) {
 		
 		console.log("I get here, juste the next if ...");
 		console.log("Mrwwlwlwlwlwl " + req.body.result.metadata);
+		console.log("test metadata object " + req.body.result.metadata.intentId);
 		console.log("Mrrrr " + req.body.result.metadata.executionSequence);
+		console.log("Mrrrr 22" + req.body.result.metadata.executionSequence[0]);
+		
 		
 		if(req.body.result.metadata.executionSequence != undefined){
 			console.log("Yataaaa, test completed");
