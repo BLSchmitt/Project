@@ -34,7 +34,7 @@ expressApp.post('/', function (req, res) {
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
 	
-	var theActionTriggering = req.body.metadata.executionSequence.action;
+	var theActionTriggering = req.body.metadata.executionSequence[0].action;
 	console.logg("l'action original : " + theActionTriggering);
 	
 	
