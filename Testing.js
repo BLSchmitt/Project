@@ -34,8 +34,10 @@ expressApp.post('/', function (req, res) {
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
 	
-	
-	
+	if(req.body.metadata.executionSequence != undefined){
+		var theActionTriggering = req.body.metadata.executionSequence[0].action;
+		console.logg("l'action original : " + theActionTriggering);
+	}
 	
 	//*
 	// that how we call an event.
@@ -137,7 +139,5 @@ var server = expressApp.listen(process.env.PORT || 5000, function () {
 	var port = server.address().port;
 	console.log("Express is working on port " + port);
 	console.log("Fin du programme ");
-	var theActionTriggering = req.body.metadata.executionSequence[0].action;
-	console.logg("l'action original : " + theActionTriggering);
 	
 });
