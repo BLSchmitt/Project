@@ -43,7 +43,7 @@ expressApp.post('/', function (req, res) {
 			//console.log("le tableau d'objet " + req.body.metadate.executionSequence[0]);
 		}
 	}
-	
+	else{
 	//*
 	// that how we call an event.
 	// data from multiple event can be open to be fill at the same time.
@@ -60,7 +60,7 @@ expressApp.post('/', function (req, res) {
 	
 	cosole.log("do i get here ?");
 	
-	
+	}
 	
 	
 	
