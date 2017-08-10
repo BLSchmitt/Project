@@ -2,7 +2,7 @@
 
 var apiai = require('apiai');
 
-var app = apiai("199651c380d041f3bca8829faf829f1c");
+var app = apiai("3b66bd00e60a41a4b2c5ff780a1f1884");
 const bodyParser = require('body-parser');
 
 var express = require('express')
@@ -13,17 +13,7 @@ expressApp.use(bodyParser.urlencoded({
 }));
 expressApp.use(bodyParser.json());
 expressApp.post('/', function (req, res) {
-    var data = req.body.result.resolvedQuery;
-    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-   
-    
-    return res.json({
-        speech: data,
-        displayText: data,
-        source: 'test_2_chatbot',
-        data: data
-    });
-    
+ 
     return res.json({
 		"followupEvent": {
 				 "name": "event_OTD_test",
