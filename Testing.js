@@ -34,6 +34,10 @@ expressApp.post('/', function (req, res) {
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
 	
+	if(req.body.metadata.executionSequence !== undefined){
+		console.log("Yataaaa, test completed");
+		//console.log("le tableau d'objet " + req.body.metadate.executionSequence[0]);
+	}
 	
 	//*
 	// that how we call an event.
@@ -51,12 +55,7 @@ expressApp.post('/', function (req, res) {
 	
 	cosole.log("do i get here ?");
 	
-	if(req.body.metadata.executionSequence !== undefined){
-		console.log("Yataaaa, test completed");
-		//console.log("le tableau d'objet " + req.body.metadate.executionSequence[0]);
-	}
 	
-	console.log("and here ?");
 	
 	
 	
