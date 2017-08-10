@@ -34,6 +34,10 @@ expressApp.post('/', function (req, res) {
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
 	
+	if(req.body.metadata.executionSequence !== undefined){
+		console.log("Yataaaa, test completed);
+	
+	}
 	
 	
 	//*
