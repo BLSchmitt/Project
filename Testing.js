@@ -38,6 +38,7 @@ expressApp.post('/', function (req, res) {
 		
 		console.log("I get here, juste the next if ...");
 		console.log("Mrwwlwlwlwlwl " + req.body.result.metadata);
+		console.log("Mrrrr " + req.body.result.metadata.executionSequence);
 		
 		if(req.body.result.metadata.executionSequence != undefined){
 			console.log("Yataaaa, test completed");
