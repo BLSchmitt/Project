@@ -34,9 +34,12 @@ expressApp.post('/', function (req, res) {
     var theNameS = JSON.stringify(theName);
     console.log(theNameS);
 	
+	if(req.body.result.action == "Best_Action_Ever"){
+		
 	if(req.body.metadata.executionSequence !== undefined){
 		console.log("Yataaaa, test completed");
 		//console.log("le tableau d'objet " + req.body.metadate.executionSequence[0]);
+	}
 	}
 	
 	//*
