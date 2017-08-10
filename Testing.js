@@ -37,7 +37,7 @@ expressApp.post('/', function (req, res) {
 	if(req.body.result.action == "Best_Action_Ever"){
 		
 		console.log("I get here, juste the next if ...");
-		console.log("mwhaha" + req.body.result.metadata);
+		console.log("Mrwwlwlwlwlwl " + req.body.result.metadata);
 		
 		if(req.body.result.metadata.executionSequence != undefined){
 			console.log("Yataaaa, test completed");
