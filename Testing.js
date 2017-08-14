@@ -26,7 +26,7 @@ expressApp.post('/', function (req, res) {
     var testSpeech = "Best answer ever, Krom !"
     
     console.log("ici le nom du test tableau " + req.body.result.contexts[0].name);
-    
+    /*
     if(req.body.result.contexts != undefined){
     int j = 0;
     int i = 0;
@@ -52,7 +52,7 @@ expressApp.post('/', function (req, res) {
 		}
 	}
     
-	
+	//*/
     
 	
 	/*
