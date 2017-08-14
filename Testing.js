@@ -29,15 +29,15 @@ expressApp.post('/', function (req, res) {
 	
 	if (req.body.result.contexts[0].name == "context_record_test"){
 		console.log("jusqu'ici, ça va");
-		int j = 0;
-   		int i = 0;
-		for(i=0 ; i<req.body.result.contexts.length ; i++){
+		var ji = 0;
+   		var ii;
+		for(ii=0 ; ii<req.body.result.contexts.length ; ii++){
 			if (req.body.result.contexts[i].name == "context_record_test"){
-				j = i;
-				var theName = req.body.result.contexts[j].parameters.name;
+				ji = ii;
+				var theName = req.body.result.contexts[ji].parameters.name;
 				console.log("le name : " + theName);
 
-				var theKrom = req.body.result.contexts[j].parameters.krom;
+				var theKrom = req.body.result.contexts[ji].parameters.krom;
 				console.log("le krom : " + theKrom);
 
 				var theNameS = JSON.stringify(theName);
