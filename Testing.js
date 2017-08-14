@@ -32,7 +32,7 @@ expressApp.post('/', function (req, res) {
 		var ji = 0;
    		var ii;
 		for(ii=0 ; ii<req.body.result.contexts.length ; ii++){
-			if (req.body.result.contexts[i].name == "context_record_test"){
+			if (req.body.result.contexts[ii].name == "context_record_test"){
 				ji = ii;
 				var theName = req.body.result.contexts[ji].parameters.name;
 				console.log("le name : " + theName);
