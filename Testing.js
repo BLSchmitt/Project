@@ -1,7 +1,9 @@
 'use strict';
 
 var apiai = require('apiai');
- 
+
+var mysql = require('mysql');
+
 var app = apiai("7941c76e84bf4d32989d3cd5b2555576");
 
 const bodyParser = require('body-parser');
@@ -46,7 +48,9 @@ expressApp.post('/', function (req, res) {
 
 				if(theNameS != "\"\"" && theKromS != "\"\""){
 					console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
-					var mysql = require('mysql');
+					
+	// start here to go to mysql
+					//var mysql = require('mysql'); already written on top
 					var mySQLString = "START TRANSACTION;";
 
 				   	var connection = mysql.createConnection({
