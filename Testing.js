@@ -46,7 +46,40 @@ expressApp.post('/', function (req, res) {
 
 				if(theNameS != "\"\"" && theKromS != "\"\""){
 					console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
+					ar mysql = require('mysql');
+					var mySQLString = "START TRANSACTION;";
 
+				   var connection = mysql.createConnection({
+						host: '41.185.27.253',
+						user: 'iot_Admin',
+						password: '<r0(k>IOT',
+						database: 'IOT',
+						multipleStatements: true
+					});
+
+mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( "' + theKromS +  '","' + theKromS +  '","' + theKromS +  '","' + 303 +  '","' + theKromS +  '","' + theKromS +  '");';
+
+				   console.log(mySQLString);
+					putInSQL();
+
+				   function putInSQL() {
+						mySQLString += "COMMIT;"
+
+					   connection.connect();
+
+					   connection.query(mySQLString, function (error, results, fields) {
+
+						   if (error) throw error;
+							console.log('INSERTED TO MYSQL');
+
+					   });
+
+					   mySQLString = "";
+						mySQLString = "START TRANSACTION;"
+
+				   }
+					connection.end();
+				};
 				}
 			}
 		}
