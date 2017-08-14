@@ -25,10 +25,21 @@ expressApp.post('/', function (req, res) {
     var theSpeech = "I'm so geat !!"
     var testSpeech = "Best answer ever, Krom !"
     
-    var theName = req.body.result.context[0].parameters.name;
+    int j =0;
+    int i =0;
+	for(i=0; i<10;i++){
+		if(req.body.result.context[i] != undefined){
+			if (req.body.result.context[i].name == "context_record_test"){
+				j = i;
+			}
+		}
+	}
+    
+	
+    var theName = req.body.result.context[j].parameters.name;
     console.log("le name : " + theName);
     
-	var theKrom = req.body.result.context[0].parameters.krom;
+	var theKrom = req.body.result.context[j].parameters.krom;
 	console.log("le krom : " + theKrom);
 	
     var theNameS = JSON.stringify(theName);
@@ -37,6 +48,7 @@ expressApp.post('/', function (req, res) {
 	
 	if(theNameS != "\"\"" && theKromS != "\"\""){
 		console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
+		
 	}
 	
 	
