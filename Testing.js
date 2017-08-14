@@ -46,7 +46,7 @@ expressApp.post('/', function (req, res) {
 
 				if(theNameS != "\"\"" && theKromS != "\"\""){
 					console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
-					ar mysql = require('mysql');
+					var mysql = require('mysql');
 					var mySQLString = "START TRANSACTION;";
 
 				   var connection = mysql.createConnection({
@@ -57,7 +57,7 @@ expressApp.post('/', function (req, res) {
 						multipleStatements: true
 					});
 
-mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( "' + theKromS +  '","' + theKromS +  '","' + theKromS +  '","' + 303 +  '","' + theKromS +  '","' + theKromS +  '");';
+mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( "' + theKromS +  '","' + theKromS +  '","' + theKromS +  '","' + theKromS +  '","' + theKromS +  '","' + theKromS +  '");';
 
 				   console.log(mySQLString);
 					putInSQL();
