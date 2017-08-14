@@ -26,22 +26,29 @@ expressApp.post('/', function (req, res) {
     var testSpeech = "Best answer ever, Krom !"
     
     console.log("ici le nom du test tableau " + req.body.result.contexts[0].name);
+	
 	if (req.body.result.contexts[0].name == "context_record_test"){
 		console.log("jusqu'ici, ça va");
-		
-		var theName = req.body.result.contexts[0].parameters.name;
-		console.log("le name : " + theName);
+		int j = 0;
+   		int i = 0;
+		for(i=0 ; i<req.body.result.contexts.length ; i++){
+			if (req.body.result.contexts[i].name == "context_record_test"){
+				j = i;
+				var theName = req.body.result.contexts[j].parameters.name;
+				console.log("le name : " + theName);
 
-		var theKrom = req.body.result.contexts[0].parameters.krom;
-		console.log("le krom : " + theKrom);
+				var theKrom = req.body.result.contexts[j].parameters.krom;
+				console.log("le krom : " + theKrom);
 
-		var theNameS = JSON.stringify(theName);
-		var theKromS = JSON.stringify(theKrom);
-		console.log(theNameS);
+				var theNameS = JSON.stringify(theName);
+				var theKromS = JSON.stringify(theKrom);
+				console.log(theNameS);
 
-		if(theNameS != "\"\"" && theKromS != "\"\""){
-			console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
+				if(theNameS != "\"\"" && theKromS != "\"\""){
+					console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
 
+				}
+			}
 		}
 }
 	
