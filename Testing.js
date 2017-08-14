@@ -25,14 +25,26 @@ expressApp.post('/', function (req, res) {
     var theSpeech = "I'm so geat !!"
     var testSpeech = "Best answer ever, Krom !"
     
-    var theName = req.body.result.parameters.name;
+    var theName = req.body.result.context[0].parameters.name;
     console.log("le name : " + theName);
     
-	var theKrom = req.body.result.parameters.krom;
+	var theKrom = req.body.result.context[0].parameters.krom;
 	console.log("le krom : " + theKrom);
 	
     var theNameS = JSON.stringify(theName);
-    console.log(theNameS);
+	var theKromS = JSON.stringify(theKrom);
+	console.log(theNameS);
+	
+	if(theNameS != "\"\"" && theKromS != "\"\""){
+		console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	// using array of objects
 	//console.log("ici le nom du test tableau " + req.body.result.contexts[0].name);
