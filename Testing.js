@@ -26,6 +26,28 @@ expressApp.post('/', function (req, res) {
     var testSpeech = "Best answer ever, Krom !"
     
     console.log("ici le nom du test tableau " + req.body.result.contexts[0].name);
+	if (req.body.result.contexts[0].name == "context_record_test"){
+		console.log("jusqu'ici, ça va");
+		
+		var theName = req.body.result.contexts[0].parameters.name;
+		console.log("le name : " + theName);
+
+		var theKrom = req.body.result.contexts[0].parameters.krom;
+		console.log("le krom : " + theKrom);
+
+		var theNameS = JSON.stringify(theName);
+		var theKromS = JSON.stringify(theKrom);
+		console.log(theNameS);
+
+		if(theNameS != "\"\"" && theKromS != "\"\""){
+			console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
+
+		}
+}
+	
+	
+	
+	
     /*
     if(req.body.result.contexts != undefined){
     int j = 0;
