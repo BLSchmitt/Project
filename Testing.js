@@ -25,16 +25,16 @@ expressApp.post('/', function (req, res) {
     var theSpeech = "I'm so geat !!"
     var testSpeech = "Best answer ever, Krom !"
     
-    if(req.body.result.context != undefined){
+    if(req.body.result.contexts != undefined){
     int j = 0;
     int i = 0;
-	for(i=0 ; i<req.body.result.context.length ; i++){
-			if (req.body.result.context[i].name == "context_record_test"){
+	for(i=0 ; i<req.body.result.contexts.length ; i++){
+			if (req.body.result.contexts[i].name == "context_record_test"){
 				j = i;
-				var theName = req.body.result.context[j].parameters.name;
+				var theName = req.body.result.contexts[j].parameters.name;
 				console.log("le name : " + theName);
 
-				var theKrom = req.body.result.context[j].parameters.krom;
+				var theKrom = req.body.result.contexts[j].parameters.krom;
 				console.log("le krom : " + theKrom);
 
 				var theNameS = JSON.stringify(theName);
