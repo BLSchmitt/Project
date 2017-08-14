@@ -53,7 +53,7 @@ expressApp.post('/', function (req, res) {
 	
     
 	
-	
+	/*
 	
 	// using array of objects
 	//console.log("ici le nom du test tableau " + req.body.result.contexts[0].name);
