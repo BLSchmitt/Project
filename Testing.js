@@ -65,7 +65,7 @@ mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,sy
 				   function putInSQL() {
 						mySQLString += "COMMIT;"
 
-					   connection.connect();
+					 //connection.connect();
 
 					   connection.query(mySQLString, function (error, results, fields) {
 
