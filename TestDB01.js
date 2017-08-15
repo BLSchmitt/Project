@@ -93,7 +93,13 @@ mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,sy
 	}
 
 
-				
+return res.json({
+			"speech": theSpeech,
+			"displayText": "do we care about this one ?",
+			"source": 'First_ChatBot',
+			"data": theData,
+	   });
+
 var request = app.textRequest('', {
 		sessionId: '94977757-7fc6-4c81-936a-b1fcfaaf9a7f'
 	});
