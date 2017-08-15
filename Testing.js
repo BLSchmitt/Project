@@ -1,6 +1,5 @@
 'use strict';
 
-
 var apiai = require('apiai');
 
 var mysql = require('mysql');
