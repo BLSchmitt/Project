@@ -24,7 +24,7 @@ expressApp.use(bodyParser.json());
 
 expressApp.post('/', function (req, res) {
 	var theData = req.body.result.resolvedQuery;
-   // var textOTW = req.body.parameters.value;
+	// var textOTW = req.body.parameters.value;
 	var theSpeech = "I'm so geat !!"
 	var testSpeech = "Best answer ever, Krom !"
 
@@ -51,7 +51,7 @@ expressApp.post('/', function (req, res) {
 					console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
 
 	// start here to go to mysql
-				/*
+				//*
 					//var mysql = require('mysql'); already written on top
 					var mySQLString = "START TRANSACTION;";
 
