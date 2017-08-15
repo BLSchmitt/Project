@@ -88,11 +88,13 @@ mySQLString += 'INSERT INTO tabletest (name,krom) VALUES (' + theNameS +  ',' + 
 					handleDisconnect();
 					
 					console.log('at least we got here');
+					console.log("le string : "+mySQLString);
 					putInSQL();
 					
 				   	function putInSQL() {
 							mySQLString += "COMMIT;"
-							
+							connection.connect();	
+						
 					   		connection.query(mySQLString, function(err, rows, fields) {
 							if (err) {
 								console.log('error: ', err);
@@ -102,8 +104,9 @@ mySQLString += 'INSERT INTO tabletest (name,krom) VALUES (' + theNameS +  ',' + 
 							mySQLString = "";
 							mySQLString = "START TRANSACTION;"
 						});
+						
 				   }
-					
+					connection.end();
 
 	// start here to go to mysql
 				/*
