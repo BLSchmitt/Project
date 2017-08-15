@@ -51,6 +51,7 @@ expressApp.post('/', function (req, res) {
 					console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
 
 	// start here to go to mysql
+				/*
 					//var mysql = require('mysql'); already written on top
 					var mySQLString = "START TRANSACTION;";
 
@@ -85,13 +86,14 @@ mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,sy
 
 					}
 					connection.end();
-
+				//*/	
 				}
 			}
 		}
 	}
 
 
+				
 var request = app.textRequest('', {
 		sessionId: '94977757-7fc6-4c81-936a-b1fcfaaf9a7f'
 	});
