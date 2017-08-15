@@ -61,7 +61,7 @@ expressApp.post('/', function (req, res) {
 
 					var connection;
 					
-mySQLString += 'INSERT INTO case_files (name,krom) VALUES ( "' + theNameS +  '","' + theKromS +  '");';
+mySQLString += 'INSERT INTO case_files (name,krom) VALUES ( ' + theNameS +  ',' + theKromS +  ');';
 
 					function handleDisconnect() {
 						console.log('1. connecting to db:');
