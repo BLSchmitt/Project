@@ -1,15 +1,20 @@
 {
-  "name": "webhook-echo-sample",
+  "name": "chatbotfirsttry",
   "version": "1.0.0",
-  "description": "Webhook echo sample",
+  "description": "first try of my chatbot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Sunil Syal",
+  "author": "Benoit schmitt",
   "dependencies": {
     "apiai": "^4.0.3",
     "body-parser": "^1.15.0",
-    "express": "^4.13.4"
-  }
+    "express": "^4.13.4",
+    "mysql": ""
+  },
+   "engines": {
+    "node": "6.11.1",
+    "npm": "3.10.10"
+  } 
 }
