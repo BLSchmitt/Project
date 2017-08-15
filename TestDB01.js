@@ -87,9 +87,10 @@ mySQLString += 'INSERT INTO tabletest (name,krom) VALUES ( ' + theNameS +  ',' +
 
 					handleDisconnect();
 					
+					console.log('at least we got here');
 					putInSQL();
-
-				   function putInSQL() {
+					
+				   	function putInSQL() {
 							mySQLString += "COMMIT;"
 							
 					   		connection.query(mySQLString, function(err, rows, fields) {
@@ -97,7 +98,7 @@ mySQLString += 'INSERT INTO tabletest (name,krom) VALUES ( ' + theNameS +  ',' +
 								console.log('error: ', err);
 								throw err;
 							}
-							
+							console.log('that should be after the error');
 							mySQLString = "";
 							mySQLString = "START TRANSACTION;"
 						});
