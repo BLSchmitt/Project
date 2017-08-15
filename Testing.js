@@ -1,5 +1,7 @@
 'use strict';
 
+heroku addons:create cleardb:ignite
+
 var apiai = require('apiai');
 
 var mysql = require('mysql');
