@@ -4,6 +4,7 @@ var apiai = require('apiai');
 
 var mysql = require('mysql');
 
+
 var app = apiai("7941c76e84bf4d32989d3cd5b2555576");
 
 const bodyParser = require('body-parser');
