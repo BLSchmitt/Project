@@ -2,6 +2,8 @@
 
 var apiai = require('apiai');
 
+var mysql = require('mysql');
+
 var app = apiai("3b66bd00e60a41a4b2c5ff780a1f1884");
 const bodyParser = require('body-parser');
 
@@ -110,6 +112,48 @@ expressApp.post('/', function (req, res) {
 		//*/
 	// end if
 	
+	// if the action is win 
+	// then save all the data to mysql
+	/*
+		var mySQLString = "START TRANSACTION;";
+
+		// var theKrom = req.body.result.contexts[ji].parameters.krom;
+		// var theNameS = JSON.stringify(theKrom);
+
+		var connection = mysql.createConnection({
+			host: '41.185.27.253',
+			user: 'iot_Admin',
+			password: '<r0(k>IOT',
+			database: 'IOT',
+			multipleStatements: true
+		});
+
+mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( ' + theKromS +  ',' + theKromS +  ',' + theKromS +  ',' + theKromS +  ',' + theKromS +  ',' + theKromS +  ');';
+
+
+		console.log(mySQLString);
+		putInSQL();
+
+		function putInSQL() {
+			mySQLString += "COMMIT;"
+
+			connection.connect();
+
+			connection.query(mySQLString, function (error, results, fields) {
+
+				if (error) throw error;
+				console.log('INSERTED TO MYSQL');
+
+			});
+
+			mySQLString = "";
+			mySQLString = "START TRANSACTION;"
+
+		}
+		connection.end();
+	//*/
+	
+	// end if
     
     var request = app.textRequest('', {
         sessionId: 'e5c6eb93-3255-4640-b48f-bfb04298b74e'
