@@ -49,9 +49,9 @@ expressApp.post('/', function (req, res) {
 
 				if(theNameS != "\"\"" && theKromS != "\"\""){
 					console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
-					
+				/*	
 					var mySQLString = "START TRANSACTION;";
-					
+				
 					var db_config = {
 						host: 'eu-cdbr-west-01.cleardb.com',
 						user: 'ba575c324edc45',
@@ -104,9 +104,11 @@ mySQLString += ' INSERT INTO tabletest (name,krom) VALUES (' + theNameS +  ',' +
 						});						
 				  	}
 					putInSQL();
-
+					
+				//*/
+					
 	// start here to go to mysql
-				/*
+				//*
 					//var mysql = require('mysql'); already written on top
 					var mySQLString = "START TRANSACTION;";
 
@@ -118,7 +120,7 @@ mySQLString += ' INSERT INTO tabletest (name,krom) VALUES (' + theNameS +  ',' +
 						multipleStatements: true
 					});
 
-mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( "' + theKromS +  '","' + theKromS +  '","' + theKromS +  '","' + theKromS +  '","' + theKromS +  '","' + theKromS +  '");';
+mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( ' + theKromS +  ',' + theKromS +  ',' + theKromS +  ',' + theKromS +  ',' + theKromS +  ',' + theKromS +  ');';
 
 
 					console.log(mySQLString);
@@ -127,7 +129,7 @@ mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,sy
 				   function putInSQL() {
 						mySQLString += "COMMIT;"
 
-						//connection.connect();
+						connection.connect();
 
 						connection.query(mySQLString, function (error, results, fields) {
 
