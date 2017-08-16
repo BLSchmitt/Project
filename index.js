@@ -14,28 +14,27 @@ expressApp.use(bodyParser.urlencoded({
 expressApp.use(bodyParser.json());
 expressApp.post('/', function (req, res) {
  
-    return res.json({
-		"followupEvent": {
-				 "name": "event_OTD_test",
-				 // that doesn't work i don't know why now 08/08/2017
-				 "data": {
-						 "truc": theSpeech
-				  }
-		}
-	});
+	// if action == find_information_1 then send a context that record the info 
+	// with another name than the name in record_context. to make sure information_2 don't erase the data
+	
+		// **TO DO**
+
+	// end if
+	
     
 	// if the event is save_case_type_data or ask_system_ID then call event event_find_system_ID
-	/*
-	 return res.json({
-		"followupEvent": {
-				 "name": "event_find_system_ID",
-				 // that doesn't work i don't know why now 08/08/2017
-			//	 "data": {
-			//			 "truc": theSpeech
-			//	  }
-		}
-	});
-	*/
+		/*
+		 return res.json({
+			"followupEvent": {
+					 "name": "event_find_system_ID",
+					 // that doesn't work i don't know why now 08/08/2017
+				//	 "data": {
+				//			 "truc": theSpeech
+				//	  }
+			}
+		});
+		*/
+	// end if
 	
 	
 	
