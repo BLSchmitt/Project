@@ -22,7 +22,7 @@ expressApp.post('/', function (req, res) {
 	// end if
 	
     
-	// if the event is save_case_type_data or ask_system_ID then call event event_find_system_ID
+	// if the action is save_case_type_data or ask_system_ID then call event event_find_system_ID
 		/*
 		 return res.json({
 			"followupEvent": {
@@ -33,14 +33,30 @@ expressApp.post('/', function (req, res) {
 				//	  }
 			}
 		});
-		*/
+		//*/
 	// end if
 	
+	// if action is save_location_data then call event_final_confirmation
+		/*
+		 return res.json({
+			"followupEvent": {
+					 "name": "event_find_system_ID",
+					 // that doesn't work i don't know why now 08/08/2017
+				//	 "data": {
+				//			 "truc": theSpeech
+				//	  }
+			}
+		});
+		//*/
+	// end if
 	
-	
-	
-	
-	
+	// if action == Big_followup.Big_followup-no
+		// switch
+		// case  body.result.resolvedQuery == "name"
+			// then call event_final_correction_name
+		// case body.result.resolvedQuery == "email"
+		// case ...
+	// end if
 	
     
     var request = app.textRequest('', {
