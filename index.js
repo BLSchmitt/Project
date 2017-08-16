@@ -24,7 +24,7 @@ expressApp.post('/', function (req, res) {
 		}
 	});
     
-	// if the event is ask_system_ID then call event event_find_system_ID
+	// if the event is save_case_type_data or ask_system_ID then call event event_find_system_ID
 	/*
 	 return res.json({
 		"followupEvent": {
