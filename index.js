@@ -24,6 +24,25 @@ expressApp.post('/', function (req, res) {
 		}
 	});
     
+	// if the event is ask_system_ID then call event event_find_system_ID
+	/*
+	 return res.json({
+		"followupEvent": {
+				 "name": "event_find_system_ID",
+				 // that doesn't work i don't know why now 08/08/2017
+			//	 "data": {
+			//			 "truc": theSpeech
+			//	  }
+		}
+	});
+	*/
+	
+	
+	
+	
+	
+	
+	
     
     var request = app.textRequest('', {
         sessionId: 'e5c6eb93-3255-4640-b48f-bfb04298b74e'
