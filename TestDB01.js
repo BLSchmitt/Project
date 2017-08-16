@@ -49,7 +49,9 @@ expressApp.post('/', function (req, res) {
 
 				if(theNameS != "\"\"" && theKromS != "\"\""){
 					console.log("MWHAHAHAHHAAHAAHHA, too easy, way too easy ...");
-				/*	
+				
+				/* doesn't work
+				
 					var mySQLString = "START TRANSACTION;";
 				
 					var db_config = {
