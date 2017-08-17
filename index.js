@@ -39,7 +39,7 @@ expressApp.post('/', function (req, res) {
 				"data": ""
 		   });
 		}
-/*		else{
+		else{
 			if( (recordContext.email == "\"\"" || recordContext.email == undefined) && (recordContext.email_2 == "\"\"" || recordContext.email_2 == undefined) ){
 				return res.json({
 					"speech": "Please give me your email adresse. You can use a sentence as : \nMy email is Youremail",
@@ -48,7 +48,7 @@ expressApp.post('/', function (req, res) {
 					"data": ""
 			   });
 			}
-			else{
+		/*	else{
 				if( (recordContext.phone_number == "\"\"" || recordContext.phone_number == undefined) && (recordContext.phone_number_2 == "\"\"" || recordContext.phone_number_2 == undefined) ){
 					return res.json({
 						"speech": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
@@ -111,8 +111,8 @@ expressApp.post('/', function (req, res) {
 						}
 					}
 				}
-			}
-		//*/
+		//*/	}
+		
 		}
 		
 		
