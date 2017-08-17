@@ -21,12 +21,12 @@ expressApp.post('/', function (req, res) {
 	// if the action is Redirect_client_data 
 	// then we check which of the 8 data we are missing and we ask for the first one in the order :
 	// name / email / phone / status / pb_desc / case_type / system_ID / location
-	if(body.result.action == "Redirect_client_data"){
+	if(req.body.result.action == "Redirect_client_data"){
 		var i =0;
-		while (body.result.contexts[i].name != "record_context"){
+		while (req.body.result.contexts[i].name != "record_context"){
 			i++;
 		}
-		var recordContext = body.result.contexts[i]
+		var recordContext = req.body.result.contexts[i]
 		
 		if( (recordContext.name == "\"\"" || recordContext.name == undefined) ){
 			console.log("ok it works carry on");
@@ -104,9 +104,9 @@ expressApp.post('/', function (req, res) {
 	// then we change it then we need to retrigger the big_followup
 	// if action == Big_followup.Big_followup-no
 		// switch
-		// case  body.result.resolvedQuery == "name"
+		// case  req.body.result.resolvedQuery == "name"
 			// then call event_final_correction_name
-		// case body.result.resolvedQuery == "email"
+		// case req.body.result.resolvedQuery == "email"
 		// case ...
 	
 	
