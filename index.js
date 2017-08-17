@@ -31,9 +31,17 @@ expressApp.post('/', function (req, res) {
 		console.log(""+req.body.result.contexts[i].parameters.name)
 		var recordContext = req.body.result.contexts[i].parameters;
 		
-		if( (recordContext.name == undefined || recordContext.name == "\"\"" ) && (recordContext.given-name == "\"\"" || recordContext.given-name == undefined) && (recordContext.name_2 == "\"\"" || recordContext.name_2 == undefined) && (recordContext.given-name_2 == "\"\"" || recordContext.given-name_2 == undefined) ){
+		if( recordContext.name == undefined  && recordContext.given-name == undefined && recordContext.name_2 == undefined && recordContext.given-name_2 == undefined ){
 			console.log("ok it works carry on");
-/*			return res.json({
+		}
+		else{
+			if( recordContext.name == "\"\"" &&  recordContext.given-name == "\"\"" && recordContext.name_2 == "\"\"" && recordContext.given-name_2 == "\"\"" ){
+				
+			}
+		}
+/*			
+	
+			return res.json({
 				"speech": "Please give me your name. You can use a sentence as : \nMy name is YourName",
 				"displayText": "Please give me your name. You can use a sentence as : \nMy name is YourName",
 				"source": 'test_2_cahtbot',
