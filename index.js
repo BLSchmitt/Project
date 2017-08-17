@@ -312,11 +312,16 @@ expressApp.post('/', function (req, res) {
 				}
 			}
 		}
-		/*
-		
-		//*/
-		
 	}// end if
+	
+	
+	// final checking
+	// when we trigger the big_followup we need to ask the user if everything is allright
+	// he will answer by yes or no
+	if(req.body.result.action == "final_confirmation"){
+		// blabla
+	} // end if
+	
 	
 	
 	// if there is a data that is wrong in the last confirmation we need first to find the one we want to change.
