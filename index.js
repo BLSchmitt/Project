@@ -92,7 +92,7 @@ expressApp.post('/', function (req, res) {
 										"speech": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
 										"displayText": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
 										"source": 'test_2_cahtbot',
-										"data": ""
+										"data": "",
 										"followupEvent": {
 											"name": "event_find_system_ID"
 										}
