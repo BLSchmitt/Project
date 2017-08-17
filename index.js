@@ -22,11 +22,14 @@ expressApp.post('/', function (req, res) {
 	// then we check which of the 8 data we are missing and we ask for the first one in the order :
 	// name / email / phone / status / pb_desc / case_type / system_ID / location
 	if(req.body.result.action == "Redirect_client_data"){
+		
 		var i =0;
 		while (req.body.result.contexts[i].name != "record_context"){
 			i++;
 		}
-		var recordContext = req.body.result.contexts[i]
+		console.log(req.body.result.contexts[i].name);
+		console.log(""+req.body.result.contexts[i].parameters.name)
+		var recordContext = req.body.result.contexts[i].parameters;
 		
 		if( (recordContext.name == "\"\"" || recordContext.name == undefined) ){
 			console.log("ok it works carry on");
