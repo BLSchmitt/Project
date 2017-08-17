@@ -36,7 +36,7 @@ expressApp.post('/', function (req, res) {
 				"speech": "Please give me your name. You can use a sentence as : \nMy name is YourName",
 				"displayText": "Please give me your name. You can use a sentence as : \nMy name is YourName",
 				"source": 'test_2_cahtbot',
-				"data": "",
+				"data": ""
 		   });
 		}
 		else{
@@ -45,7 +45,7 @@ expressApp.post('/', function (req, res) {
 					"speech": "Please give me your email adresse. You can use a sentence as : \nMy email is Youremail",
 					"displayText": "Please give me your email adresse. You can use a sentence as : \nMy email is Youremail",
 					"source": 'test_2_cahtbot',
-					"data": "",
+					"data": ""
 			   });
 			}
 			else{
@@ -54,7 +54,7 @@ expressApp.post('/', function (req, res) {
 						"speech": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
 						"displayText": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
 						"source": 'test_2_cahtbot',
-						"data": "",
+						"data": ""
 				   });
 				}
 				else{
@@ -63,7 +63,7 @@ expressApp.post('/', function (req, res) {
 							"speech": "Please give me the status of the machine. You can use a sentence as : \nThe status is theStatus",
 							"displayText": "Please give me the status of the machine. You can use a sentence as : \nThe status is theStatus",
 							"source": 'test_2_cahtbot',
-							"data": "",
+							"data": ""
 					   });
 					}
 					else{
@@ -73,7 +73,7 @@ expressApp.post('/', function (req, res) {
 								"speech": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
 								"displayText": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
 								"source": 'test_2_cahtbot',
-								"data": "",
+								"data": ""
 						   });
 						}
 						else{
@@ -83,7 +83,7 @@ expressApp.post('/', function (req, res) {
 									"speech": "Please give me the case type. You can use a sentence as : \nThe case type is TheCaseType",
 									"displayText": "Please give me the case type. You can use a sentence as : \nThe case type is TheCaseType",
 									"source": 'test_2_cahtbot',
-									"data": "",
+									"data": ""
 							   });
 							}
 							else{
@@ -93,7 +93,7 @@ expressApp.post('/', function (req, res) {
 										"speech": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
 										"displayText": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
 										"source": 'test_2_cahtbot',
-										"data": "",
+										"data": ""
 								   });
 								}
 								else{
@@ -103,7 +103,7 @@ expressApp.post('/', function (req, res) {
 											"speech": "Please give me your location. You can use a sentence as : \nMy location is YourLocation",
 											"displayText": "Please give me your location. You can use a sentence as : \nMy location is YourLocation",
 											"source": 'test_2_cahtbot',
-											"data": "",
+											"data": ""
 									   });
 									}
 								}
