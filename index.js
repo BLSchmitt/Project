@@ -16,12 +16,21 @@ expressApp.use(bodyParser.urlencoded({
 expressApp.use(bodyParser.json());
 expressApp.post('/', function (req, res) {
  	
-	
+	//general_fallback_2
 	// redirect the client to what data we still need
 	// if the action is Redirect_client_data 
 	// then we check which of the 8 data we are missing and we ask for the first one in the order :
 	// name / email / phone / status / pb_desc / case_type / system_ID / location
-	
+	if(body.result.action == "Redirect_client_data"){
+		var i =0;
+		while (body.result.contexts[i].name != "record_context"){
+			i++;
+		}
+		var recordContext = body.result.contexts[i]
+		
+		if( (recordContext.name == "\"\"" || recordContext.name == undefined) ){
+			console.log("ok it works carry on");
+		}
 		// switch case (name or name_2 or given_name or given_name_2 != "\"\"" && != undefined ...)
 		// ok mais si ils le sont alors on rep : please say something like "my name is YellowSummarin"
 	
@@ -33,7 +42,9 @@ expressApp.post('/', function (req, res) {
 				"data": theData,
 		//*/
 		// case ...
-	// end if
+		
+	} // end if
+	
 	
 	
 	
