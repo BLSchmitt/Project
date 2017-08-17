@@ -172,6 +172,12 @@ expressApp.post('/', function (req, res) {
 			"displayText": "do we care about this one ?",
 			"source": 'test_2_cahtbot',
 			"data": "data",
+			"contextOut": [
+				{
+					"name":"sealed", 
+					"lifespan":2
+				}
+			],
 			"followupEvent": {
 				"name": "event_find_system_ID",
 				"data":{
@@ -287,7 +293,7 @@ expressApp.post('/', function (req, res) {
 											"data": "data",
 											 "contextOut": [
 												{
-													"name":"finla_check", 
+													"name":"final_check", 
 													"lifespan":2
 												}
 											],
