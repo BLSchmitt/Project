@@ -95,7 +95,7 @@ expressApp.post('/', function (req, res) {
 										"data": ""
 								   });
 								}
-					/*			else{
+								else{
 									if( recordContext.location == "" || recordContext.location == undefined ){
 									// location
 										return res.json({
@@ -105,14 +105,15 @@ expressApp.post('/', function (req, res) {
 											"data": ""
 									   });
 									}
-							//*/	}
+								}
 							}
 						}
 					}
 				}
 			}
-		
 		}
+		
+	}
 		
 		
 		
