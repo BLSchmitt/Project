@@ -66,9 +66,8 @@ expressApp.post('/', function (req, res) {
 							"data": ""
 					   });
 					}
-		/*			else{
-						if( recordContext.problem_desc == "\"\"" || recordContext.problem_desc == undefined ){
-						
+					else{
+						if( recordContext.problem_desc == "\"\"" || recordContext.problem_desc == undefined ){						
 							return res.json({
 								"speech": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
 								"displayText": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
@@ -76,7 +75,7 @@ expressApp.post('/', function (req, res) {
 								"data": ""
 						   });
 						}
-						else{
+				/*		else{
 							if( recordContext.case_type == "\"\"" || recordContext.case_type == undefined ){
 							// Case_type
 								return res.json({
@@ -108,8 +107,8 @@ expressApp.post('/', function (req, res) {
 									}
 								}
 							}
-						}
-				//*/	}
+					//*/	}
+					}
 				}
 			}
 		
