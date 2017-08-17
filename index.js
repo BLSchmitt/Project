@@ -93,6 +93,12 @@ expressApp.post('/', function (req, res) {
 										"displayText": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
 										"source": 'test_2_cahtbot',
 										"data": "",
+										"contextOut": [
+											{
+												"name":"sealed", 
+												"lifespan":2
+											}
+										],
 										"followupEvent": {
 											"name": "event_find_system_ID"
 										}
