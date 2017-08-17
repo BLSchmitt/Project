@@ -85,7 +85,7 @@ expressApp.post('/', function (req, res) {
 									"data": ""
 							   });
 							}
-					/*		else{
+							else{
 								if( recordContext.system_ID == "\"\"" || recordContext.system_ID == undefined ){
 								// system_ID
 									return res.json({
@@ -95,7 +95,7 @@ expressApp.post('/', function (req, res) {
 										"data": ""
 								   });
 								}
-								else{
+					/*			else{
 									if( recordContext.location == "\"\"" || recordContext.location == undefined ){
 									// location
 										return res.json({
@@ -105,8 +105,8 @@ expressApp.post('/', function (req, res) {
 											"data": ""
 									   });
 									}
-								}
-						//*/	}
+							//*/	}
+							}
 						}
 					}
 				}
