@@ -48,7 +48,7 @@ expressApp.post('/', function (req, res) {
 					"data": ""
 			   });
 			}
-		/*	else{
+			else{
 				if( (recordContext.phone_number == "\"\"" || recordContext.phone_number == undefined) && (recordContext.phone_number_2 == "\"\"" || recordContext.phone_number_2 == undefined) ){
 					return res.json({
 						"speech": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
@@ -66,9 +66,9 @@ expressApp.post('/', function (req, res) {
 							"data": ""
 					   });
 					}
-					else{
+		/*			else{
 						if( recordContext.problem_desc == "\"\"" || recordContext.problem_desc == undefined ){
-						// problem_desc
+						
 							return res.json({
 								"speech": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
 								"displayText": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
@@ -109,9 +109,9 @@ expressApp.post('/', function (req, res) {
 								}
 							}
 						}
-					}
+				//*/	}
 				}
-		//*/	}
+			}
 		
 		}
 		
