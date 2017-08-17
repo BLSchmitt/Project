@@ -31,7 +31,7 @@ expressApp.post('/', function (req, res) {
 		console.log(""+req.body.result.contexts[i].parameters.name)
 		var recordContext = req.body.result.contexts[i].parameters;
 		
-		if( recordContext.given-name == undefined  ){
+		if( recordContext.given_name == undefined  ){
 			console.log("ok it works carry on");
 		}
 /*		
