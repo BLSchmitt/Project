@@ -188,11 +188,11 @@ expressApp.post('/', function (req, res) {
 	} // end if
 	
 	
-	
+	// call final check (big_followup)
 	// we need to make sur we have all the data before the laste confirmation.
 	// so we need to check in the record_context if we have everything (name or given_name or name_2 && problem_desc.original && status ... )
 	// when we have all the data we need, we juste have to call the final checking.
-	// if action is save_location_data then call event_final_confirmation
+	// if action is save_location_data or call_final_check then call event_final_confirmation and set the context to event_final_confirmation
 	if (req.body.result.action == "save_location_data" || req.body.result.action == "call_final_check"){
 		
 		var ii =0;
@@ -300,6 +300,7 @@ expressApp.post('/', function (req, res) {
 											"followupEvent": {
 											 "name": "event_final_confirmation",
 											 "data": {
+												 
 												}
 											}
 										});
@@ -316,6 +317,7 @@ expressApp.post('/', function (req, res) {
 		//*/
 		
 	}// end if
+	
 	
 	// if there is a data that is wrong in the last confirmation we need first to find the one we want to change.
 	// then we change it then we need to retrigger the big_followup
