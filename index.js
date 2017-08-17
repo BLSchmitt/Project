@@ -31,10 +31,11 @@ expressApp.post('/', function (req, res) {
 		console.log(""+req.body.result.contexts[i].parameters.name)
 		var recordContext = req.body.result.contexts[i].parameters;
 		
-		if( (recordContext.name == undefined || recordContext.name == "\"\"") && (recordContext.given-name == undefined || recordContext.given-name == "\"\"") && (recordContext.name_2 == undefined || recordContext.name_2 == "\"\"") && (recordContext.given-name_2 == undefined || recordContext.given-name_2 == "\"\"") ){
+		if( recordContext.given-name == undefined  ){
 			console.log("ok it works carry on");
 		}
 /*		
+		if( (recordContext.name == undefined || recordContext.name == "\"\"") && (recordContext.given-name == undefined || recordContext.given-name == "\"\"") && (recordContext.name_2 == undefined || recordContext.name_2 == "\"\"") && (recordContext.given-name_2 == undefined || recordContext.given-name_2 == "\"\"") ){
 
 		else{
 			if( recordContext.name == "\"\"" &&  recordContext.given-name == "\"\"" && recordContext.name_2 == "\"\"" && recordContext.given-name_2 == "\"\"" ){
