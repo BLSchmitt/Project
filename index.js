@@ -31,13 +31,7 @@ expressApp.post('/', function (req, res) {
 		console.log(""+req.body.result.contexts[i].parameters.name)
 		var recordContext = req.body.result.contexts[i].parameters;
 		
-		if( (recordContext.name == undefined || recordContext.name == "\"\"") && (recordContext.given_name == undefined || recordContext.given_name == "\"\"") && (recordContext.name_2 == undefined || recordContext.name_2 == "\"\"") && (recordContext.given_name_2 == undefined || recordContext.given_name_2 == "\"\"") ){
-			console.log("ok it works carry on");
-		}
-/*		
-		}
-			
-	
+		if( (recordContext.name == undefined || recordContext.name == "\"\"") && (recordContext.given_name == undefined || recordContext.given_name == "\"\"") && (recordContext.name_2 == undefined || recordContext.name_2 == "\"\"") && (recordContext.given_name_2 == undefined || recordContext.given_name_2 == "\"\"") ){	
 			return res.json({
 				"speech": "Please give me your name. You can use a sentence as : \nMy name is YourName",
 				"displayText": "Please give me your name. You can use a sentence as : \nMy name is YourName",
@@ -117,9 +111,7 @@ expressApp.post('/', function (req, res) {
 						}
 					}
 				}
-			
 			}
-		//*/
 		}
 		
 		
