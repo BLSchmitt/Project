@@ -162,8 +162,15 @@ expressApp.post('/', function (req, res) {
 	if (req.body.result.action == "save_case_type_data" || req.body.result.action == "ask_system_ID"){
 		console.log("system_id event working");
    		return res.json({
+			"speech": "hihoheho",
+			"displayText": "do we care about this one ?",
+			"source": 'test_2_cahtbot',
+			"data": "data",
 			"followupEvent": {
-				"name": "event_find_system_ID"
+				"name": "event_find_system_ID",
+				"data":{
+					"system_ID": ""
+				}
 			}
 		});		
 	} // end if
