@@ -168,6 +168,13 @@ mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,sy
 	//*/
 	
 	// end if
+	
+	return res.json({
+			"speech": "hihoheho",
+			"displayText": "do we care about this one ?",
+			"source": 'test_2_cahtbot',
+			"data": "data",
+	   });
     
     var request = app.textRequest('', {
         sessionId: '94977757-7fc6-4c81-936a-b1fcfaaf9a7f'
