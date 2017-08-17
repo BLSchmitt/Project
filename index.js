@@ -225,12 +225,56 @@ expressApp.post('/', function (req, res) {
 	
 	// if the action is win 
 	// then save all the data to mysql
-	/*
+	if(req.body.result.action == "win"){
+		
+	//*
 		var mySQLString = "START TRANSACTION;";
 
 		// var theKrom = req.body.result.contexts[ji].parameters.krom;
 		// var theNameS = JSON.stringify(theKrom);
-
+		var j =0;
+		while (req.body.result.contexts[j].name != "record_context"){
+			j++;
+		}
+		
+		var theStatus = req.body.result.constext[j].parameters.status;
+		var theLocation = req.body.result.constext[j].parameters.location;
+		var theCase_type = req.body.result.constext[j].parameters.case_type;
+		var theProblem_desc = req.body.result.constext[j].parameters.problem_desc;
+		var theSystem_id = req.body.result.constext[j].parameters.system_id;
+		
+		if( req.body.result.context[j].parameters.name_2 == undefined ){			
+			var theEmail = req.body.result.context[j].parameters.email;
+			var thePhone_number = req.body.result.context[j].parameters.phone_number;
+			if(req.body.result.context[j].parameters.name == ""){
+				var theName = req.body.result.context[j].parameters.given_name;
+			}
+			else{
+				var theName = req.body.result.context[j].parameters.name;
+			}
+		}
+		else{
+			var theEmail = req.body.result.context[j].parameters.email_2;
+			var thePhone_number = req.body.result.context[j].parameters.phone_number_2;
+			if(req.body.result.context[j].parameters.name_2 == ""){
+				var theName = req.body.result.context[j].parameters.given_name_2;
+			}
+			else{
+				var theName = req.body.result.context[j].parameters.name_2;
+			}
+		}
+		
+		var theProblem_descS = JSON.stringify(theProblem_desc);
+		var theNameS = JSON.stringify(theName);
+		var theEmailS = JSON.stringify(theEmail);
+		var thePhone_numberS = JSON.stringify(thePhone_number);
+		var theSystem_idS = JSON.stringify(theSystem_id);
+		var theStatusS = JSON.stringify(theStatus);
+		
+		var theCase_typeS = JSON.stringify(theCase_type);
+		var theLocationS = JSON.stringify(theLocation);
+				
+		
 		var connection = mysql.createConnection({
 			host: '41.185.27.253',
 			user: 'iot_Admin',
@@ -239,7 +283,7 @@ expressApp.post('/', function (req, res) {
 			multipleStatements: true
 		});
 
-mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( ' + theKromS +  ',' + theKromS +  ',' + theKromS +  ',' + theKromS +  ',' + theKromS +  ',' + theKromS +  ');';
+mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( ' + theProblem_descS +  ',' + theNameS +  ',' + theEmailS +  ',' + thePhone_numberS +  ',' + theSystem_idS +  ',' + theStatusS +  ');';
 
 
 		console.log(mySQLString);
@@ -264,7 +308,7 @@ mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,sy
 		connection.end();
 	//*/
 	
-	// end if
+	}// end if
 	
 	return res.json({
 			"speech": "hihoheho",
