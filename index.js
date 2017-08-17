@@ -93,6 +93,9 @@ expressApp.post('/', function (req, res) {
 										"displayText": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
 										"source": 'test_2_cahtbot',
 										"data": ""
+										"followupEvent": {
+											"name": "event_find_system_ID",
+										}
 								   });
 								}
 								else{
@@ -116,7 +119,7 @@ expressApp.post('/', function (req, res) {
 	}
 		
 		
-		
+		// information 2
 		// switch case (name or name_2 or given_name or given_name_2 != "\"\"" && != undefined ...)
 		// ok mais si ils le sont alors on rep : please say something like "my name is YellowSummarin"
 	
@@ -154,20 +157,18 @@ expressApp.post('/', function (req, res) {
 	// end if
 	
     
+	// system_ID
 	// In order to check the system ID we need to trigger it.
 	// if the action is save_case_type_data or ask_system_ID then call event event_find_system_ID
-		/*
-		 return res.json({
+	if (req.body.action == "save_case_type_data" || req.body.action == "ask_system_ID"){
+		return res.json({
 			"followupEvent": {
 					 "name": "event_find_system_ID",
-					 // that doesn't work i don't know why now 08/08/2017
-				//	 "data": {
-				//			 "truc": theSpeech
-				//	  }
 			}
-		});
-		//*/
-	// end if
+		});		
+	} // end if
+	
+	
 	
 	// we need to make sur we have all the data before the laste confirmation.
 	// so we need to check in the record_context if we have everything (name or given_name or name_2 && problem_desc.original && status ... )
