@@ -44,7 +44,35 @@ expressApp.post('/', function (req, res) {
 					// phone
 				}
 				else{
-					
+					if( recordContext.status == "\"\"" || recordContext.status == undefined ){
+						// status
+					}
+					else{
+						if( recordContext.problem_desc == "\"\"" || recordContext.problem_desc == undefined ){
+						// problem_desc
+						}
+						else{
+							if( recordContext.case_type == "\"\"" || recordContext.case_type == undefined ){
+							// Case_type
+							}
+							else{
+								if( recordContext.system_ID == "\"\"" || recordContext.system_ID == undefined ){
+								// system_ID
+								}
+								else{
+									if( recordContext.location == "\"\"" || recordContext.location == undefined ){
+									// location
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		
+		
 		// switch case (name or name_2 or given_name or given_name_2 != "\"\"" && != undefined ...)
 		// ok mais si ils le sont alors on rep : please say something like "my name is YellowSummarin"
 	
