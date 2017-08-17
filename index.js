@@ -114,8 +114,7 @@ expressApp.post('/', function (req, res) {
 					}
 				}
 			}
-		}
-		
+		}		
 	}
 		
 		
@@ -161,6 +160,7 @@ expressApp.post('/', function (req, res) {
 	// In order to check the system ID we need to trigger it.
 	// if the action is save_case_type_data or ask_system_ID then call event event_find_system_ID
 	if (req.body.action == "save_case_type_data" || req.body.action == "ask_system_ID"){
+		console.log("system_id event working");
 		return res.json({
 			"followupEvent": {
 					 "name": "event_find_system_ID",
