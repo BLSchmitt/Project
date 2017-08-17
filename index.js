@@ -49,7 +49,7 @@ expressApp.post('/', function (req, res) {
 			   });
 			}
 			else{
-				if( (recordContext.phone-number == "\"\"" || recordContext.phone-number == undefined) && (recordContext.phone-number_2 == "\"\"" || recordContext.phone-number_2 == undefined) ){
+				if( (recordContext.phone_number == "\"\"" || recordContext.phone_number == undefined) && (recordContext.phone_number_2 == "\"\"" || recordContext.phone_number_2 == undefined) ){
 					return res.json({
 						"speech": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
 						"displayText": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
