@@ -31,9 +31,20 @@ expressApp.post('/', function (req, res) {
 		console.log(""+req.body.result.contexts[i].parameters.name)
 		var recordContext = req.body.result.contexts[i].parameters;
 		
-		if( (recordContext.name == "\"\"" || recordContext.name == undefined) ){
+		if( (recordContext.name == "\"\"" || recordContext.name == undefined) && (recordContext.given-name == "\"\"" || recordContext.given-name == undefined) && (recordContext.name_2 == "\"\"" || recordContext.name_2 == undefined) && (recordContext.given-name_2 == "\"\"" || recordContext.given-name_2 == undefined) ){
 			console.log("ok it works carry on");
+			// name
 		}
+		else{
+			if( (recordContext.email == "\"\"" || recordContext.email == undefined) && (recordContext.email_2 == "\"\"" || recordContext.email_2 == undefined) ){
+				// ask for email
+			}
+			else{
+				if( (recordContext.phone-number == "\"\"" || recordContext.phone-number == undefined) && (recordContext.phone-number_2 == "\"\"" || recordContext.phone-number_2 == undefined) ){
+					// phone
+				}
+				else{
+					
 		// switch case (name or name_2 or given_name or given_name_2 != "\"\"" && != undefined ...)
 		// ok mais si ils le sont alors on rep : please say something like "my name is YellowSummarin"
 	
