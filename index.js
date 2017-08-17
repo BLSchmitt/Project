@@ -75,7 +75,7 @@ expressApp.post('/', function (req, res) {
 								"data": ""
 						   });
 						}
-				/*		else{
+						else{
 							if( recordContext.case_type == "\"\"" || recordContext.case_type == undefined ){
 							// Case_type
 								return res.json({
@@ -85,7 +85,7 @@ expressApp.post('/', function (req, res) {
 									"data": ""
 							   });
 							}
-							else{
+					/*		else{
 								if( recordContext.system_ID == "\"\"" || recordContext.system_ID == undefined ){
 								// system_ID
 									return res.json({
@@ -106,8 +106,8 @@ expressApp.post('/', function (req, res) {
 									   });
 									}
 								}
-							}
-					//*/	}
+						//*/	}
+						}
 					}
 				}
 			}
