@@ -20,7 +20,7 @@ expressApp.post('/', function (req, res) {
 	// redirect the client to what data we still need
 	// if the action is Redirect_client_data 
 	// then we check which of the 8 data we are missing and we ask for the first one in the order :
-	// name / email / phone / status / pb_desc / case_type / system_ID / location
+	// name / email / phone-number / status / problem_desc / case_type / system_ID / location
 	if(req.body.result.action == "Redirect_client_data"){
 		
 		var i =0;
@@ -33,35 +33,79 @@ expressApp.post('/', function (req, res) {
 		
 		if( (recordContext.name == "\"\"" || recordContext.name == undefined) && (recordContext.given-name == "\"\"" || recordContext.given-name == undefined) && (recordContext.name_2 == "\"\"" || recordContext.name_2 == undefined) && (recordContext.given-name_2 == "\"\"" || recordContext.given-name_2 == undefined) ){
 			console.log("ok it works carry on");
-			// name
+			return res.json({
+				"speech": "Please give me your name. You can use a sentence as : \nMy name is YourName",
+				"displayText": "Please give me your name. You can use a sentence as : \nMy name is YourName",
+				"source": 'test_2_cahtbot',
+				"data": "",
+		   });
 		}
 		else{
 			if( (recordContext.email == "\"\"" || recordContext.email == undefined) && (recordContext.email_2 == "\"\"" || recordContext.email_2 == undefined) ){
-				// ask for email
+				return res.json({
+					"speech": "Please give me your email adresse. You can use a sentence as : \nMy email is Youremail",
+					"displayText": "Please give me your email adresse. You can use a sentence as : \nMy email is Youremail",
+					"source": 'test_2_cahtbot',
+					"data": "",
+			   });
 			}
 			else{
 				if( (recordContext.phone-number == "\"\"" || recordContext.phone-number == undefined) && (recordContext.phone-number_2 == "\"\"" || recordContext.phone-number_2 == undefined) ){
-					// phone
+					return res.json({
+						"speech": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
+						"displayText": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
+						"source": 'test_2_cahtbot',
+						"data": "",
+				   });
 				}
 				else{
 					if( recordContext.status == "\"\"" || recordContext.status == undefined ){
-						// status
+						return res.json({
+							"speech": "Please give me the status of the machine. You can use a sentence as : \nThe status is theStatus",
+							"displayText": "Please give me the status of the machine. You can use a sentence as : \nThe status is theStatus",
+							"source": 'test_2_cahtbot',
+							"data": "",
+					   });
 					}
 					else{
 						if( recordContext.problem_desc == "\"\"" || recordContext.problem_desc == undefined ){
 						// problem_desc
+							return res.json({
+								"speech": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
+								"displayText": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
+								"source": 'test_2_cahtbot',
+								"data": "",
+						   });
 						}
 						else{
 							if( recordContext.case_type == "\"\"" || recordContext.case_type == undefined ){
 							// Case_type
+								return res.json({
+									"speech": "Please give me the case type. You can use a sentence as : \nThe case type is TheCaseType",
+									"displayText": "Please give me the case type. You can use a sentence as : \nThe case type is TheCaseType",
+									"source": 'test_2_cahtbot',
+									"data": "",
+							   });
 							}
 							else{
 								if( recordContext.system_ID == "\"\"" || recordContext.system_ID == undefined ){
 								// system_ID
+									return res.json({
+										"speech": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
+										"displayText": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
+										"source": 'test_2_cahtbot',
+										"data": "",
+								   });
 								}
 								else{
 									if( recordContext.location == "\"\"" || recordContext.location == undefined ){
 									// location
+										return res.json({
+											"speech": "Please give me your location. You can use a sentence as : \nMy location is YourLocation",
+											"displayText": "Please give me your location. You can use a sentence as : \nMy location is YourLocation",
+											"source": 'test_2_cahtbot',
+											"data": "",
+									   });
 									}
 								}
 							}
