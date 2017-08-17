@@ -285,6 +285,12 @@ expressApp.post('/', function (req, res) {
 											"displayText": "do we care about this one ?",
 											"source": 'test_2_cahtbot',
 											"data": "data",
+											 "contextOut": [
+												{
+													"name":"finla_check", 
+													"lifespan":2
+												}
+											],
 											"followupEvent": {
 											 "name": "event_final_confirmation",
 											 "data": {
