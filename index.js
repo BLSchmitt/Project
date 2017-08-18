@@ -65,6 +65,15 @@ expressApp.post('/', function (req, res) {
 								"displayText": "Is the machine down, partially down or inhibited ?",
 								"source": 'test_2_cahtbot',
 								"data": ""
+								"contextOut": [
+									{
+										"name":"ask_status", 
+										"lifespan":2
+									}
+								],
+								"followupEvent": {
+									"name": "event_ask_status"
+								}
 						   });
 						}
 						else{
