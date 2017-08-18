@@ -60,8 +60,8 @@ expressApp.post('/', function (req, res) {
 				else{
 					if( recordContext.status == "" || recordContext.status == undefined ){
 						return res.json({
-							"speech": "Please give me the status of the machine. You can use a sentence as : \nThe status is theStatus",
-							"displayText": "Please give me the status of the machine. You can use a sentence as : \nThe status is theStatus",
+							"speech": "Great, now I will ask for the status of the machine. \nIs the machine down, partially down or inhibited ?",
+							"displayText": "Great, now I will ask for the status of the machine. \nIs the machine down, partially down or inhibited ?",
 							"source": 'test_2_cahtbot',
 							"data": ""
 					   });
