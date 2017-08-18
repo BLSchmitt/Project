@@ -177,30 +177,30 @@ expressApp.post('/', function (req, res) {
 													]
 											   });
 											}
-											else{
-												// call final check (big_followup)
-												// we need to make sur we have all the data before the laste confirmation.
-												// when we have all the data we need, we juste have to call the final checking.
-												// if action is save_location_data or call_final_check then call event_final_confirmation and set the context to event_final_confirmation
-												 return res.json({
-													"speech": "Let's check everything.",
-													"displayText": "Let's check everything.",
-													"source": 'test_2_cahtbot',
-													"data": "data",
-													"contextOut": [
-														{
-															"name":"final_check", 
-															"lifespan":2
-														}
-													],
-													"followupEvent": {
-														"name": "event_final_confirmation",
-														"data": {
-														}
-													}
-												});
-											}
 										}
+									}
+									else{
+										// call final check (big_followup)
+										// we need to make sur we have all the data before the laste confirmation.
+										// when we have all the data we need, we juste have to call the final checking.
+										// if action is save_location_data or call_final_check then call event_final_confirmation and set the context to event_final_confirmation
+										 return res.json({
+											"speech": "Let's check everything.",
+											"displayText": "Let's check everything.",
+											"source": 'test_2_cahtbot',
+											"data": "data",
+											"contextOut": [
+												{
+													"name":"final_check", 
+													"lifespan":2
+												}
+											],
+											"followupEvent": {
+												"name": "event_final_confirmation",
+												"data": {
+												}
+											}
+										});
 									}
 								}
 							}
