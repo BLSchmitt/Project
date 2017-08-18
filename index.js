@@ -167,42 +167,6 @@ expressApp.post('/', function (req, res) {
 	}
 		
 		
-		// information 2
-		// switch case (name or name_2 or given_name or given_name_2 != "\"\"" && != undefined ...)
-		// ok mais si ils le sont alors on rep : please say something like "my name is YellowSummarin"
-	
-		/*
-			return res.json({
-				"speech": testSpeech,
-				"displayText": "do we care about this one ?",
-				"source": 'First_ChatBot',
-				"data": theData,
-		
-		// case ...
-		
-	 // end if
-	//*/
-	
-	
-	
-	// if action == find_information_1 then send a context that record the info 
-	// with another name than the name in record_context. to make sure information_2 don't erase the data
-	// send a context with name and email remplace by the value of name_2 and email_2
-	
-		// **TO DO**
-	/*
-		"contextOut": [
-				{
-				"name":"un_autre_context",
-				"lifespan":2,
-				"parameters":
-					{
-					"TestTest":"Rome"
-					}
-				}
-			]
-	//*/
-	// end if
 	
     
 	// system_ID
