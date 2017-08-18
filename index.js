@@ -64,7 +64,7 @@ expressApp.post('/', function (req, res) {
 								"speech": "Is the machine down, partially down or inhibited ?",
 								"displayText": "Is the machine down, partially down or inhibited ?",
 								"source": 'test_2_cahtbot',
-								"data": ""
+								"data": "",
 								"contextOut": [
 									{
 										"name":"ask_status", 
@@ -81,7 +81,7 @@ expressApp.post('/', function (req, res) {
 								"speech": "Great, now I will ask for the status of the machine. \nIs the machine down, partially down or inhibited ?",
 								"displayText": "Great, now I will ask for the status of the machine. \nIs the machine down, partially down or inhibited ?",
 								"source": 'test_2_cahtbot',
-								"data": ""
+								"data": "",
 								"contextOut": [
 									{
 										"name":"ask_status", 
