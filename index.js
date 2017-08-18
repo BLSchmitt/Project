@@ -88,6 +88,7 @@ expressApp.post('/', function (req, res) {
 						else{
 							if( recordContext.case_type == "" || recordContext.case_type == undefined ){
 							// Case_type
+								// problem_desc_no_fallback
 								return res.json({
 									"speech": "Please give me the case type. We have 4 different case type : \nC-job (problem, corrective maintenance, issue), \nP-job (service, planned maintenance), \nK-job (upgrade, update), \nI-job (Installation). \nWhich one is yours ? \nYou can use a sentence as : \nThe case type is TheCaseType",
 									"displayText": "Please give me the case type. We have 4 different case type : \nC-job (problem, corrective maintenance, issue), \nP-job (service, planned maintenance), \nK-job (upgrade, update), \nI-job (Installation). \nWhich one is yours ? \nYou can use a sentence as : \nThe case type is TheCaseType",
