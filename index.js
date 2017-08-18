@@ -352,30 +352,30 @@ expressApp.post('/', function (req, res) {
 			j++;
 		}
 		// store the data
-		var theStatus = req.body.result.constext[j].parameters.status;
-		var theLocation = req.body.result.constext[j].parameters.location;
-		var theCase_type = req.body.result.constext[j].parameters.case_type;
-		var theProblem_desc = req.body.result.constext[j].parameters.problem_desc;
-		var theSystem_id = req.body.result.constext[j].parameters.system_id;
+		var theStatus = req.body.result.constexts[j].parameters.status;
+		var theLocation = req.body.result.constexts[j].parameters.location;
+		var theCase_type = req.body.result.constexts[j].parameters.case_type;
+		var theProblem_desc = req.body.result.constexts[j].parameters.problem_desc;
+		var theSystem_id = req.body.result.constexts[j].parameters.system_id;
 		
-		if( req.body.result.context[j].parameters.name_2 == undefined ){			
-			var theEmail = req.body.result.context[j].parameters.email;
-			var thePhone_number = req.body.result.context[j].parameters.phone_number;
-			if(req.body.result.context[j].parameters.name == ""){
-				var theName = req.body.result.context[j].parameters.given_name;
+		if( req.body.result.contexts[j].parameters.name_2 == undefined ){			
+			var theEmail = req.body.result.contexts[j].parameters.email;
+			var thePhone_number = req.body.result.contexts[j].parameters.phone_number;
+			if(req.body.result.contexts[j].parameters.name == ""){
+				var theName = req.body.result.contexts[j].parameters.given_name;
 			}
 			else{
-				var theName = req.body.result.context[j].parameters.name;
+				var theName = req.body.result.contexts[j].parameters.name;
 			}
 		}
 		else{
-			var theEmail = req.body.result.context[j].parameters.email_2;
-			var thePhone_number = req.body.result.context[j].parameters.phone_number_2;
-			if(req.body.result.context[j].parameters.name_2 == ""){
-				var theName = req.body.result.context[j].parameters.given_name_2;
+			var theEmail = req.body.result.contexts[j].parameters.email_2;
+			var thePhone_number = req.body.result.contexts[j].parameters.phone_number_2;
+			if(req.body.result.contexts[j].parameters.name_2 == ""){
+				var theName = req.body.result.contexts[j].parameters.given_name_2;
 			}
 			else{
-				var theName = req.body.result.context[j].parameters.name_2;
+				var theName = req.body.result.contexts[j].parameters.name_2;
 			}
 		} 
 		var theSpeech = "are this information correct ? \nName : "+theName+" \nEmail : "+theEmail+" \nPhone number : "+thePhone_number+" \nStatus : "+theStatus+"\nProblem description : "+theProblem_desc+"\nCase type : "+theCase_type+"\nSystem ID : "+theSystem_id+"\nLocation : "+theLocation; 
@@ -427,30 +427,30 @@ expressApp.post('/', function (req, res) {
 			j++;
 		}
 		
-		var theStatus = req.body.result.constext[j].parameters.status;
-		var theLocation = req.body.result.constext[j].parameters.location;
-		var theCase_type = req.body.result.constext[j].parameters.case_type;
-		var theProblem_desc = req.body.result.constext[j].parameters.problem_desc;
-		var theSystem_id = req.body.result.constext[j].parameters.system_id;
+		var theStatus = req.body.result.constexts[j].parameters.status;
+		var theLocation = req.body.result.constexts[j].parameters.location;
+		var theCase_type = req.body.result.constexts[j].parameters.case_type;
+		var theProblem_desc = req.body.result.constexts[j].parameters.problem_desc;
+		var theSystem_id = req.body.result.constexts[j].parameters.system_id;
 		
-		if( req.body.result.context[j].parameters.name_2 == undefined ){			
-			var theEmail = req.body.result.context[j].parameters.email;
-			var thePhone_number = req.body.result.context[j].parameters.phone_number;
-			if(req.body.result.context[j].parameters.name == ""){
-				var theName = req.body.result.context[j].parameters.given_name;
+		if( req.body.result.contexts[j].parameters.name_2 == undefined ){			
+			var theEmail = req.body.result.contexts[j].parameters.email;
+			var thePhone_number = req.body.result.contexts[j].parameters.phone_number;
+			if(req.body.result.contexts[j].parameters.name == ""){
+				var theName = req.body.result.contexts[j].parameters.given_name;
 			}
 			else{
-				var theName = req.body.result.context[j].parameters.name;
+				var theName = req.body.result.contexts[j].parameters.name;
 			}
 		}
 		else{
-			var theEmail = req.body.result.context[j].parameters.email_2;
-			var thePhone_number = req.body.result.context[j].parameters.phone_number_2;
-			if(req.body.result.context[j].parameters.name_2 == ""){
-				var theName = req.body.result.context[j].parameters.given_name_2;
+			var theEmail = req.body.result.contexts[j].parameters.email_2;
+			var thePhone_number = req.body.result.contexts[j].parameters.phone_number_2;
+			if(req.body.result.contexts[j].parameters.name_2 == ""){
+				var theName = req.body.result.contexts[j].parameters.given_name_2;
 			}
 			else{
-				var theName = req.body.result.context[j].parameters.name_2;
+				var theName = req.body.result.contexts[j].parameters.name_2;
 			}
 		}
 		
