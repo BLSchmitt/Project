@@ -133,7 +133,7 @@ expressApp.post('/', function (req, res) {
 								if( recordContext.system_id == "" || recordContext.system_id == undefined ){
 									return res.json({
 										"speech": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
-										"displayText": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
+										"displayText": "Please give me the system ID. You can use a sentence as : \nThe system ID is ZA1234MR01",
 										"source": 'test_2_cahtbot',
 										"data": "",
 										"contextOut": [
@@ -141,10 +141,7 @@ expressApp.post('/', function (req, res) {
 												"name":"sealed", 
 												"lifespan":2
 											}
-										],
-										"followupEvent": {
-											"name": "event_find_system_ID"
-										}
+										]
 								   });
 								}
 								else{
