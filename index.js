@@ -213,7 +213,7 @@ expressApp.post('/', function (req, res) {
 		
 		
 	
-    
+    /*
 	// system_ID
 	// In order to check the system ID we need to trigger it.
 	// if the action is save_case_type_data or ask_system_ID then call event event_find_system_ID
@@ -238,6 +238,7 @@ expressApp.post('/', function (req, res) {
 			}
 		});		
 	} // end if
+	//*/
 	
 	/* useless (need to delet it)
 	// call final check (big_followup)
