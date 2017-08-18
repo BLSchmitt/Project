@@ -128,12 +128,34 @@ expressApp.post('/', function (req, res) {
 								else{
 									if( recordContext.location == "" || recordContext.location == undefined ){
 									// location
-										return res.json({
-											"speech": "Please give me your location. You can use a sentence as : \nMy location is YourLocation",
-											"displayText": "Please give me your location. You can use a sentence as : \nMy location is YourLocation",
-											"source": 'test_2_cahtbot',
-											"data": ""
-									   });
+										if(req.body.result.metadata.intentName == "system_ID_yes"){
+											return res.json({
+												"speech": "Great, I will ask for your location then check-up with you all the data and it will be the end.",
+												"displayText": "Great, I will ask for your location then check-up with you all the data and it will be the end.",
+												"source": 'test_2_cahtbot',
+												"data": "",
+												"contextOut": [
+													{
+														"name":"find_location", 
+														"lifespan":2
+													}
+												]
+										   });
+										}
+										else{
+											return res.json({
+												"speech": "Please give me your location. Use a sentence as : \nMy location is YourLocation",
+												"displayText": "Please give me your location. Use a sentence as : \nMy location is YourLocation",
+												"source": 'test_2_cahtbot',
+												"data": "",
+												"contextOut": [
+													{
+														"name":"find_location", 
+														"lifespan":2
+													}
+												]
+										   });
+										}
 									}
 								}
 							}
