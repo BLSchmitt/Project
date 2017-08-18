@@ -44,8 +44,8 @@ expressApp.post('/', function (req, res) {
 			// Email
 			if( (recordContext.email == "" || recordContext.email == undefined) && (recordContext.email_2 == "" || recordContext.email_2 == undefined) ){
 				return res.json({
-					"speech": "Please give me your email adresse. You can use a sentence as : \nMy email is Youremail",
-					"displayText": "Please give me your email adresse. You can use a sentence as : \nMy email is Youremail",
+					"speech": "Please give me your email address. You can use a sentence as : \nMy email is Youremail",
+					"displayText": "Please give me your email address. You can use a sentence as : \nMy email is Youremail",
 					"source": 'test_2_cahtbot',
 					"data": ""
 			   });
@@ -113,8 +113,8 @@ expressApp.post('/', function (req, res) {
 							// Case type
 							if( recordContext.case_type == "" || recordContext.case_type == undefined ){
 								return res.json({
-									"speech": "You need to choose one of this 4 cate type : \nC-job (problem, corrective maintenance, issue), \nP-job (service, planned maintenance), \nK-job (upgrade, update), \nI-job (Installation).",
-									"displayText": "You need to choose one of this 4 cate type : \nC-job (problem, corrective maintenance, issue), \nP-job (service, planned maintenance), \nK-job (upgrade, update), \nI-job (Installation).",
+									"speech": "You need to choose one of these 4 case types : \nC-job (problem, corrective maintenance, issue), \nP-job (service, planned maintenance), \nK-job (upgrade, update), \nI-job (installation).",
+									"displayText": "You need to choose one of these 4 case types : \nC-job (problem, corrective maintenance, issue), \nP-job (service, planned maintenance), \nK-job (upgrade, update), \nI-job (installation).",
 									"source": 'test_2_cahtbot',
 									"data": "",
 									"contextOut": [
@@ -404,7 +404,7 @@ expressApp.post('/', function (req, res) {
 				var theName = req.body.result.contexts[j].parameters.name_2;
 			}
 		} 
-		var theSpeech = "are this information correct ? \nName : "+theName+" \nEmail : "+theEmail+" \nPhone number : "+thePhone_number+" \nStatus : "+theStatus+"\nProblem description : "+theProblem_desc+"\nCase type : "+theCase_type+"\nSystem ID : "+theSystem_id+"\nLocation : "+theLocation; 
+		var theSpeech = "Are these informations correct? \nName: "+theName+" \nEmail: "+theEmail+" \nPhone number: "+thePhone_number+" \nStatus: "+theStatus+"\nProblem description: "+theProblem_desc+"\nCase type: "+theCase_type+"\nSystem ID: "+theSystem_id+"\nLocation: "+theLocation; 
 		
 		return res.json({
 			"speech": theSpeech,
