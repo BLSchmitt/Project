@@ -149,8 +149,8 @@ expressApp.post('/', function (req, res) {
 									if( recordContext.location == "" || recordContext.location == undefined ){
 										if(req.body.result.metadata.intentName == "system_ID_yes"){
 											return res.json({
-												"speech": "Great, I will ask for your location then check-up with you all the data and it will be the end.",
-												"displayText": "Great, I will ask for your location then check-up with you all the data and it will be the end.",
+												"speech": "Great, I will ask for your location then check-up with you all the data and it will be the end. \nUse a sentence as: \nMy location is YourLocation",
+												"displayText": "Great, I will ask for your location then check-up with you all the data and it will be the end. \nUse a sentence as: \nMy location is YourLocation",
 												"source": 'test_2_cahtbot',
 												"data": "",
 												"contextOut": [
@@ -165,8 +165,8 @@ expressApp.post('/', function (req, res) {
 											// Location
 											if( recordContext.location == "" || recordContext.location == undefined ){
 												return res.json({
-													"speech": "Please give me your location. Use a sentence as : \nMy location is YourLocation",
-													"displayText": "Please give me your location. Use a sentence as : \nMy location is YourLocation",
+													"speech": "Please give me your location. Use a sentence as: \nMy location is YourLocation",
+													"displayText": "Please give me your location. Use a sentence as: \nMy location is YourLocation",
 													"source": 'test_2_cahtbot',
 													"data": "",
 													"contextOut": [
