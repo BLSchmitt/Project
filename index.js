@@ -31,6 +31,7 @@ expressApp.post('/', function (req, res) {
 		console.log(""+req.body.result.contexts[i].parameters.name)
 		var recordContext = req.body.result.contexts[i].parameters;
 		
+		// Name
 		if( (recordContext.name == undefined || recordContext.name == "") && (recordContext.given_name == undefined || recordContext.given_name == "") && (recordContext.name_2 == undefined || recordContext.name_2 == "") && (recordContext.given_name_2 == undefined || recordContext.given_name_2 == "") ){	
 			return res.json({
 				"speech": "Please give me your name. You can use a sentence as : \nMy name is YourName",
@@ -40,6 +41,7 @@ expressApp.post('/', function (req, res) {
 		   });
 		}
 		else{
+			// Email
 			if( (recordContext.email == "" || recordContext.email == undefined) && (recordContext.email_2 == "" || recordContext.email_2 == undefined) ){
 				return res.json({
 					"speech": "Please give me your email adresse. You can use a sentence as : \nMy email is Youremail",
@@ -49,6 +51,7 @@ expressApp.post('/', function (req, res) {
 			   });
 			}
 			else{
+				// Phone number
 				if( (recordContext.phone_number == "" || recordContext.phone_number == undefined) && (recordContext.phone_number_2 == "" || recordContext.phone_number_2 == undefined) ){
 					return res.json({
 						"speech": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
@@ -58,6 +61,7 @@ expressApp.post('/', function (req, res) {
 				   });
 				}
 				else{
+					// Status
 					if( recordContext.status == "" || recordContext.status == undefined ){
 						if(req.body.result.metadata.intentName == "Information_yes_fallback"){
 							return res.json({
@@ -77,6 +81,7 @@ expressApp.post('/', function (req, res) {
 						   });
 						}
 						else{
+							// Status
 							return res.json({
 								"speech": "Great, now I will ask for the status of the machine. \nIs the machine down, partially down or inhibited ?",
 								"displayText": "Great, now I will ask for the status of the machine. \nIs the machine down, partially down or inhibited ?",
@@ -95,6 +100,7 @@ expressApp.post('/', function (req, res) {
 						}
 					}
 					else{
+						// Problem description
 						if( recordContext.problem_desc == "" || recordContext.problem_desc == undefined ){						
 							return res.json({
 								"speech": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
@@ -104,8 +110,8 @@ expressApp.post('/', function (req, res) {
 						   });
 						}
 						else{
+							// Case type
 							if( recordContext.case_type == "" || recordContext.case_type == undefined ){
-							// Case_type
 								if(req.body.result.metadata.intentName == "problem_desc_no_fallback"){
 									return res.json({
 										"speech": "You need to choose one of this 4 cate type : \nC-job (problem, corrective maintenance, issue), \nP-job (service, planned maintenance), \nK-job (upgrade, update), \nI-job (Installation).",
@@ -115,7 +121,7 @@ expressApp.post('/', function (req, res) {
 								   });
 								}
 								else{
-									// problem_desc_no_fallback
+									// Case type
 									return res.json({
 										"speech": "Please give me the case type. We have 4 different case type : \nC-job (problem, corrective maintenance, issue), \nP-job (service, planned maintenance), \nK-job (upgrade, update), \nI-job (Installation). \nWhich one is yours ? \nYou can use a sentence as : \nThe case type is TheCaseType",
 										"displayText": "Please give me the case type. We have 4 different case type : \nC-job (problem, corrective maintenance, issue), \nP-job (service, planned maintenance), \nK-job (upgrade, update), \nI-job (Installation). \nWhich one is yours ? \nYou can use a sentence as : \nThe case type is TheCaseType",
@@ -125,8 +131,8 @@ expressApp.post('/', function (req, res) {
 								}
 							}
 							else{
+								// System_ID
 								if( recordContext.system_id == "" || recordContext.system_id == undefined ){
-								// system_ID
 									return res.json({
 										"speech": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
 										"displayText": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
@@ -144,8 +150,8 @@ expressApp.post('/', function (req, res) {
 								   });
 								}
 								else{
+									// Location
 									if( recordContext.location == "" || recordContext.location == undefined ){
-									// location
 										if(req.body.result.metadata.intentName == "system_ID_yes"){
 											return res.json({
 												"speech": "Great, I will ask for your location then check-up with you all the data and it will be the end.",
@@ -161,6 +167,7 @@ expressApp.post('/', function (req, res) {
 										   });
 										}
 										else{
+											// Location
 											return res.json({
 												"speech": "Please give me your location. Use a sentence as : \nMy location is YourLocation",
 												"displayText": "Please give me your location. Use a sentence as : \nMy location is YourLocation",
