@@ -59,12 +59,22 @@ expressApp.post('/', function (req, res) {
 				}
 				else{
 					if( recordContext.status == "" || recordContext.status == undefined ){
-						return res.json({
-							"speech": "Great, now I will ask for the status of the machine. \nIs the machine down, partially down or inhibited ?",
-							"displayText": "Great, now I will ask for the status of the machine. \nIs the machine down, partially down or inhibited ?",
-							"source": 'test_2_cahtbot',
-							"data": ""
-					   });
+						if(req.body.result.metadata.intentName == "Information_yes_fallback"){
+							return res.json({
+								"speech": "Is the machine down, partially down or inhibited ?",
+								"displayText": "Is the machine down, partially down or inhibited ?",
+								"source": 'test_2_cahtbot',
+								"data": ""
+						   });
+						}
+						else{
+							return res.json({
+								"speech": "Great, now I will ask for the status of the machine. \nIs the machine down, partially down or inhibited ?",
+								"displayText": "Great, now I will ask for the status of the machine. \nIs the machine down, partially down or inhibited ?",
+								"source": 'test_2_cahtbot',
+								"data": ""
+						   });
+						}
 					}
 					else{
 						if( recordContext.problem_desc == "" || recordContext.problem_desc == undefined ){						
