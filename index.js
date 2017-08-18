@@ -340,7 +340,12 @@ expressApp.post('/', function (req, res) {
 	// when we trigger the big_followup we need to ask the user if everything is allright
 	// he will answer by yes or no
 	if(req.body.result.action == "final_confirmation"){
-		// blabla
+		 return res.json({
+			"speech": "walalalalalal",
+			"displayText": "do we care about this one ?",
+			"source": 'test_2_cahtbot',
+			"data": "data",
+		});
 	} // end if
 	
 	
