@@ -21,7 +21,7 @@ expressApp.post('/', function (req, res) {
 	// if the action is Redirect_client_data 
 	// then we check which of the 8 data we are missing and we ask for the first one in the order :
 	// name / email / phone-number / status / problem_desc / case_type / system_ID / location
-	if(req.body.result.action == "Redirect_client_data"){
+	if(req.body.result.action == "Redirect_client_data" || req.body.result.action == "save_location_data" || req.body.result.action == "call_final_check"){
 		
 		var i =0;
 		while (req.body.result.contexts[i].name != "record_context"){
@@ -163,18 +163,43 @@ expressApp.post('/', function (req, res) {
 										}
 										else{
 											// Location
-											return res.json({
-												"speech": "Please give me your location. Use a sentence as : \nMy location is YourLocation",
-												"displayText": "Please give me your location. Use a sentence as : \nMy location is YourLocation",
-												"source": 'test_2_cahtbot',
-												"data": "",
-												"contextOut": [
-													{
-														"name":"find_location", 
-														"lifespan":2
+											if( recordContext.location == "" || recordContext.location == undefined ){
+												return res.json({
+													"speech": "Please give me your location. Use a sentence as : \nMy location is YourLocation",
+													"displayText": "Please give me your location. Use a sentence as : \nMy location is YourLocation",
+													"source": 'test_2_cahtbot',
+													"data": "",
+													"contextOut": [
+														{
+															"name":"find_location", 
+															"lifespan":2
+														}
+													]
+											   });
+											}
+											else{
+												// call final check (big_followup)
+												// we need to make sur we have all the data before the laste confirmation.
+												// when we have all the data we need, we juste have to call the final checking.
+												// if action is save_location_data or call_final_check then call event_final_confirmation and set the context to event_final_confirmation
+												 return res.json({
+													"speech": "Let's check everything.",
+													"displayText": "Let's check everything.",
+													"source": 'test_2_cahtbot',
+													"data": "data",
+													"contextOut": [
+														{
+															"name":"final_check", 
+															"lifespan":2
+														}
+													],
+													"followupEvent": {
+														"name": "event_final_confirmation",
+														"data": {
+														}
 													}
-												]
-										   });
+												});
+											}
 										}
 									}
 								}
@@ -214,7 +239,7 @@ expressApp.post('/', function (req, res) {
 		});		
 	} // end if
 	
-	
+	/* useless (need to delet it)
 	// call final check (big_followup)
 	// we need to make sur we have all the data before the laste confirmation.
 	// so we need to check in the record_context if we have everything (name or given_name or name_2 && problem_desc.original && status ... )
@@ -340,6 +365,7 @@ expressApp.post('/', function (req, res) {
 			}
 		}
 	}// end if
+	//*/ // end of the useless thing (need to delet it)
 	
 	
 	// final checking
