@@ -378,11 +378,11 @@ expressApp.post('/', function (req, res) {
 			j++;
 		}
 		// store the data
-		var theStatus = req.body.result.constexts[j].parameters.status;
-		var theLocation = req.body.result.constexts[j].parameters.location;
-		var theCase_type = req.body.result.constexts[j].parameters.case_type;
-		var theProblem_desc = req.body.result.constexts[j].parameters.problem_desc;
-		var theSystem_id = req.body.result.constexts[j].parameters.system_id;
+		var theStatus = req.body.result.contexts[j].parameters.status;
+		var theLocation = req.body.result.contexts[j].parameters.location;
+		var theCase_type = req.body.result.contexts[j].parameters.case_type;
+		var theProblem_desc = req.body.result.contexts[j].parameters.problem_desc;
+		var theSystem_id = req.body.result.contexts[j].parameters.system_id;
 		
 		if( req.body.result.contexts[j].parameters.name_2 == undefined ){			
 			var theEmail = req.body.result.contexts[j].parameters.email;
@@ -453,11 +453,12 @@ expressApp.post('/', function (req, res) {
 			j++;
 		}
 		
-		var theStatus = req.body.result.constexts[j].parameters.status;
-		var theLocation = req.body.result.constexts[j].parameters.location;
-		var theCase_type = req.body.result.constexts[j].parameters.case_type;
-		var theProblem_desc = req.body.result.constexts[j].parameters.problem_desc;
-		var theSystem_id = req.body.result.constexts[j].parameters.system_id;
+		// store the data
+		var theStatus = req.body.result.contexts[j].parameters.status;
+		var theLocation = req.body.result.contexts[j].parameters.location;
+		var theCase_type = req.body.result.contexts[j].parameters.case_type;
+		var theProblem_desc = req.body.result.contexts[j].parameters.problem_desc;
+		var theSystem_id = req.body.result.contexts[j].parameters.system_id;
 		
 		if( req.body.result.contexts[j].parameters.name_2 == undefined ){			
 			var theEmail = req.body.result.contexts[j].parameters.email;
@@ -478,7 +479,7 @@ expressApp.post('/', function (req, res) {
 			else{
 				var theName = req.body.result.contexts[j].parameters.name_2;
 			}
-		}
+		} 
 		
 		var theProblem_descS = JSON.stringify(theProblem_desc);
 		var theNameS = JSON.stringify(theName);
@@ -490,7 +491,7 @@ expressApp.post('/', function (req, res) {
 		var theCase_typeS = JSON.stringify(theCase_type);
 		var theLocationS = JSON.stringify(theLocation);
 				
-		
+		// connect to the database
 		var connection = mysql.createConnection({
 			host: '41.185.27.253',
 			user: 'iot_Admin',
@@ -498,13 +499,15 @@ expressApp.post('/', function (req, res) {
 			database: 'IOT',
 			multipleStatements: true
 		});
+		
+		// fill the sql request
+		mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( ' + theProblem_descS +  ',' + theNameS +  ',' + theEmailS +  ',' + thePhone_numberS +  ',' + theSystem_idS +  ',' + theStatusS +  ');';
 
-mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( ' + theProblem_descS +  ',' + theNameS +  ',' + theEmailS +  ',' + thePhone_numberS +  ',' + theSystem_idS +  ',' + theStatusS +  ');';
-
-
+		
 		console.log(mySQLString);
 		putInSQL();
-
+		
+		
 		function putInSQL() {
 			mySQLString += "COMMIT;"
 
@@ -528,7 +531,7 @@ mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,sy
 	
 	// to delete
 	return res.json({
-			"speech": "hihoheho",
+			"speech": "Something is wrong I souldn't go here in the webhook, sorry :)",
 			"displayText": "do we care about this one ?",
 			"source": 'test_2_cahtbot',
 			"data": "data",
