@@ -305,7 +305,7 @@ expressApp.post('/', function (req, res) {
 	
 	
 	
-	
+	// MySQL
 	// if the action is win it means the user confirmed we have all the data we need
 	// then save all the data to mysql
 	if(req.body.result.action == "win"){
@@ -313,6 +313,7 @@ expressApp.post('/', function (req, res) {
 	//*
 		var mySQLString = "START TRANSACTION;";
 		var finalSpeech ="";
+		var theCase_id;
 		// var theKrom = req.body.result.contexts[ji].parameters.krom;
 		// var theNameS = JSON.stringify(theKrom);
 		var j =0;
@@ -411,13 +412,11 @@ expressApp.post('/', function (req, res) {
 			
 			//connection.connect();
 			
-			var theCase_id;
-			
 			// retrieve the case id and stock it in theCase_id
 			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
 				if (err) throw err;
 				console.log(result);
-				theCase_id = ""+result[1][0].case_id;
+				theCase_id = result[1][0].case_id;
 				console.log("le case id est : " + theCase_id);
 			});
 
@@ -425,7 +424,7 @@ expressApp.post('/', function (req, res) {
 			var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id ="+ theCase_id +";COMMIT;";
 			connection.query(mySQLString_2, function (err, result, fields) {
 				if (err) throw err;
-				console.log("erased");
+				console.log("Erased");
 			});
 			finalSpeech = "Here is the case id you need :) \n"+theCase_id;
 		}
