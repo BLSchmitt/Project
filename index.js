@@ -367,8 +367,8 @@ expressApp.post('/', function (req, res) {
 			
 			// push the data in mySQL
 			connection.query(mySQLString, function (error, results, fields) {
-				if (err){
-						throw err;
+				if (error){
+						throw error;
 						return;
 					}
 				console.log('INSERTED TO MYSQL');
