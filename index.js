@@ -333,7 +333,7 @@ expressApp.post('/', function (req, res) {
 		
 	//*
 		var mySQLString = "START TRANSACTION;";
-
+		var finalSpeech ="";
 		// var theKrom = req.body.result.contexts[ji].parameters.krom;
 		// var theNameS = JSON.stringify(theKrom);
 		var j =0;
@@ -407,7 +407,7 @@ expressApp.post('/', function (req, res) {
 		
 		console.log(mySQLString);
 		putInSQL();
-		
+		retrieve_id();
 		
 		function putInSQL() {
 			mySQLString += "COMMIT;"
@@ -422,14 +422,24 @@ expressApp.post('/', function (req, res) {
 			});
 
 			mySQLString = "";
-			mySQLString = "START TRANSACTION;"
+			mySQLString = "START TRANSACTION;";
 
 		}
+		
+//		delete from orders where id_users = 1 and id_product = 2
+		function retrieve_id(){
+			var theCase_id = "";
+			var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id ="+ theCase_id +";COMMIT;";
+			
+			finalSpeech = "Here is the case id you need :) \n"+theCase_id;
+			
+		}
+		
 		connection.end();
 		
 		return res.json({
-			"speech": "Here is the case id you need :) \n<Case id you need>",
-			"displayText": "Here is the case id you need :) \n<Case id you need>",
+			"speech": finalSpeech,
+			"displayText": finalSpeech,
 			"source": 'test_2_cahtbot',
 			"data": "data",
 	   });
