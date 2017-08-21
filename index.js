@@ -240,133 +240,6 @@ expressApp.post('/', function (req, res) {
 	} // end if
 	//*/
 	
-	/* useless (need to delet it)
-	// call final check (big_followup)
-	// we need to make sur we have all the data before the laste confirmation.
-	// so we need to check in the record_context if we have everything (name or given_name or name_2 && problem_desc.original && status ... )
-	// when we have all the data we need, we juste have to call the final checking.
-	// if action is save_location_data or call_final_check then call event_final_confirmation and set the context to event_final_confirmation
-	if (req.body.result.action == "save_location_data" || req.body.result.action == "call_final_check"){
-		
-		var ii =0;
-		while (req.body.result.contexts[ii].name != "record_context"){
-			ii++;
-		}
-		
-		var recordContext = req.body.result.contexts[ii].parameters;
-		
-		if( (recordContext.name == undefined || recordContext.name == "") && (recordContext.given_name == undefined || recordContext.given_name == "") && (recordContext.name_2 == undefined || recordContext.name_2 == "") && (recordContext.given_name_2 == undefined || recordContext.given_name_2 == "") ){	
-			return res.json({
-				"speech": "Please give me your name. You can use a sentence as : \nMy name is YourName",
-				"displayText": "Please give me your name. You can use a sentence as : \nMy name is YourName",
-				"source": 'test_2_cahtbot',
-				"data": ""
-		   });
-		}
-		else{
-			if( (recordContext.email == "" || recordContext.email == undefined) && (recordContext.email_2 == "" || recordContext.email_2 == undefined) ){
-				return res.json({
-					"speech": "Please give me your email adresse. You can use a sentence as : \nMy email is Youremail",
-					"displayText": "Please give me your email adresse. You can use a sentence as : \nMy email is Youremail",
-					"source": 'test_2_cahtbot',
-					"data": ""
-			   });
-			}
-			else{
-				if( (recordContext.phone_number == "" || recordContext.phone_number == undefined) && (recordContext.phone_number_2 == "" || recordContext.phone_number_2 == undefined) ){
-					return res.json({
-						"speech": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
-						"displayText": "Please give me your phone number. You can use a sentence as : \nMy number is Yourenumber",
-						"source": 'test_2_cahtbot',
-						"data": ""
-				   });
-				}
-				else{
-					if( recordContext.status == "" || recordContext.status == undefined ){
-						return res.json({
-							"speech": "Please give me the status of the machine. You can use a sentence as : \nThe status is theStatus",
-							"displayText": "Please give me the status of the machine. You can use a sentence as : \nThe status is theStatus",
-							"source": 'test_2_cahtbot',
-							"data": ""
-					   });
-					}
-					else{
-						if( recordContext.problem_desc == "" || recordContext.problem_desc == undefined ){						
-							return res.json({
-								"speech": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
-								"displayText": "Please give me the description of your problem. You can use a sentence as : \nMy problem is YourProblem",
-								"source": 'test_2_cahtbot',
-								"data": ""
-						   });
-						}
-						else{
-							if( recordContext.case_type == "" || recordContext.case_type == undefined ){
-							// Case_type
-								return res.json({
-									"speech": "Please give me the case type. You can use a sentence as : \nThe case type is TheCaseType",
-									"displayText": "Please give me the case type. You can use a sentence as : \nThe case type is TheCaseType",
-									"source": 'test_2_cahtbot',
-									"data": ""
-							   });
-							}
-							else{
-								if( recordContext.system_id == "" || recordContext.system_id == undefined ){
-								// system_ID
-									return res.json({
-										"speech": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
-										"displayText": "Please give me the system id. You can use a sentence as : \nThe system ID is ZA1234MR01",
-										"source": 'test_2_cahtbot',
-										"data": "",
-										"contextOut": [
-											{
-												"name":"sealed", 
-												"lifespan":2
-											}
-										],
-										"followupEvent": {
-											"name": "event_find_system_ID"
-										}
-								   });
-								}
-								else{
-									if( recordContext.location == "" || recordContext.location == undefined ){
-									// location
-										return res.json({
-											"speech": "Please give me your location. You can use a sentence as : \nMy location is YourLocation",
-											"displayText": "Please give me your location. You can use a sentence as : \nMy location is YourLocation",
-											"source": 'test_2_cahtbot',
-											"data": ""
-									   });
-									}
-									else{
-										 return res.json({
-											"speech": "hihoheho",
-											"displayText": "do we care about this one ?",
-											"source": 'test_2_cahtbot',
-											"data": "data",
-											 "contextOut": [
-												{
-													"name":"final_check", 
-													"lifespan":2
-												}
-											],
-											"followupEvent": {
-											 "name": "event_final_confirmation",
-											 "data": {
-												 
-												}
-											}
-										});
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}// end if
-	//*/ // end of the useless thing (need to delet it)
 	
 	
 	// final checking
@@ -403,6 +276,20 @@ expressApp.post('/', function (req, res) {
 			}
 			else{
 				var theName = req.body.result.contexts[j].parameters.name_2;
+			}
+			if(theEmail == ""){
+				theEmail = req.body.result.contexts[j].parameters.email;
+			}
+			if(thePhone_number == ""){
+				thePhone_number = req.body.result.contexts[j].parameters.phone_number;
+			}
+			if (theName == ""){
+				if(req.body.result.contexts[j].parameters.name == ""){
+					theName = req.body.result.contexts[j].parameters.given_name;
+				}
+				else{
+					theName = req.body.result.contexts[j].parameters.name;
+				}
 			}
 		} 
 		var theSpeech = "Are these informations correct? \nName: "+theName+" \nEmail: "+theEmail+" \nPhone number: "+thePhone_number+" \nStatus: "+theStatus+"\nProblem description: "+theProblem_desc+"\nCase type: "+theCase_type+"\nSystem ID: "+theSystem_id+"\nLocation: "+theLocation; 
