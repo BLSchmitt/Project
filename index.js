@@ -414,10 +414,12 @@ expressApp.post('/', function (req, res) {
 			var theCase_id;
 			
 			// retrieve the case id and stock it in theCase_id
-			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test;COMMIT;", function (err, result, fields) {
+			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
 				if (err) throw err;
 				console.log(result);
-				theCase_id = result;
+				console.log(result[1])
+				theCase_id = ""+result[1];
+				console.log("le case id est : " + theCase_id);
 			});
 			/*
 			// delete the case id we just took
