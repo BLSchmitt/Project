@@ -367,7 +367,10 @@ expressApp.post('/', function (req, res) {
 			
 			// push the data in mySQL
 			connection.query(mySQLString, function (error, results, fields) {
-				if (error) throw error;
+				if (err){
+						throw err;
+						return;
+					}
 				console.log('INSERTED TO MYSQL');
 				// get the id from mySQL and erase it
 				retrieve_id();
@@ -381,7 +384,10 @@ expressApp.post('/', function (req, res) {
 			//connection.connect();			
 			// retrieve the case id and stock it in theCase_id
 			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
-				if (err) throw err;
+				if (err){
+						throw err;
+						return;
+					}
 				theCase_id = result[1][0].case_id;
 				console.log("le case id est : " + theCase_id);
 				finalSpeech = finalSpeech + theCase_id;
@@ -390,7 +396,10 @@ expressApp.post('/', function (req, res) {
 				// delete the case id we just took
 				var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id =" + theCase_id + ";COMMIT;";
 				connection.query(mySQLString_2, function (err, result, fields) {
-					if (err) throw err;
+					if (err){
+						throw err;
+						return;
+					}
 					console.log("Erased");
 					connection.end();
 				});		
