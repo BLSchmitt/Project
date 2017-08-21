@@ -16,8 +16,6 @@ expressApp.use(bodyParser.urlencoded({
 expressApp.use(bodyParser.json());
 expressApp.post('/', function (req, res) {
  	
-	var finalSpeech ="";
-
 	
 	//general_fallback_2
 	// redirect the client to what data we still need
@@ -313,6 +311,7 @@ expressApp.post('/', function (req, res) {
 	// then save all the data to mysql
 	if(req.body.result.action == "win"){
 		
+		var finalSpeech ="Here is the case id you need :)  ";
 		var mySQLString = "START TRANSACTION;";
 		var theCase_id;
 
@@ -414,7 +413,7 @@ expressApp.post('/', function (req, res) {
 				if (err) throw err;
 				theCase_id = result[1][0].case_id;
 				console.log("le case id est : " + theCase_id);
-				finalSpeech = "Here is the case id you need :)  " + theCase_id;
+				finalSpeech = finalSpeech + theCase_id;
 				console.log(finalSpeech);
 
 				// delete the case id we just took
@@ -426,6 +425,12 @@ expressApp.post('/', function (req, res) {
 				});		
 			});
 		}
+		return res.json({
+			"speech": finalSpeech,
+			"displayText": finalSpeech,
+			"source": 'test_2_cahtbot',
+			"data": "data",
+		});
 	}// end if
 	
 		return res.json({
@@ -434,14 +439,6 @@ expressApp.post('/', function (req, res) {
 			"source": 'test_2_cahtbot',
 			"data": "data",
 	   });
-/*
-	return res.json({
-		"speech": finalSpeech,
-		"displayText": finalSpeech,
-		"source": 'test_2_cahtbot',
-		"data": "data",
-	});
-*/
 
 	
 	// essential
