@@ -311,7 +311,7 @@ expressApp.post('/', function (req, res) {
 	// then save all the data to mysql
 	if(req.body.result.action == "win"){
 		
-		var finalSpeech ="Here is the case id you need :)  ";
+		//var finalSpeech ="Here is the case id you need :)  ";
 		var mySQLString = "START TRANSACTION;";
 		var theCase_id;
 
@@ -413,7 +413,7 @@ expressApp.post('/', function (req, res) {
 				if (err) throw err;
 				theCase_id = result[1][0].case_id;
 				console.log("le case id est : " + theCase_id);
-				finalSpeech = finalSpeech + theCase_id;
+				var finalSpeech = "Here is the case id you need :)  " + theCase_id;
 				console.log(finalSpeech);
 
 				// delete the case id we just took
@@ -422,15 +422,15 @@ expressApp.post('/', function (req, res) {
 					if (err) throw err;
 					console.log("Erased");
 					connection.end();
-					return res.json({
-						"speech": finalSpeech,
-						"displayText": finalSpeech,
-						"source": 'test_2_cahtbot',
-						"data": "data",
-					});
+				
 				});		
 			});
-			
+			return res.json({
+				"speech": finalSpeech,
+				"displayText": finalSpeech,
+				"source": 'test_2_cahtbot',
+				"data": "data",
+			});
 		}
 		
 	}// end if
