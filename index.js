@@ -424,13 +424,14 @@ expressApp.post('/', function (req, res) {
 					connection.end();
 				});		
 			});
+			return res.json({
+				"speech": finalSpeech,
+				"displayText": finalSpeech,
+				"source": 'test_2_cahtbot',
+				"data": "data",
+			});
 		}
-		return res.json({
-			"speech": finalSpeech,
-			"displayText": finalSpeech,
-			"source": 'test_2_cahtbot',
-			"data": "data",
-		});
+		
 	}// end if
 	
 		return res.json({
