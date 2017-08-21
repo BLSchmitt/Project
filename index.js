@@ -211,35 +211,6 @@ expressApp.post('/', function (req, res) {
 			}
 		}		
 	}
-		
-		
-	
-    /*
-	// system_ID
-	// In order to check the system ID we need to trigger it.
-	// if the action is save_case_type_data or ask_system_ID then call event event_find_system_ID
-	if (req.body.result.action == "save_case_type_data" || req.body.result.action == "ask_system_ID"){
-		console.log("system_id event working");
-   		return res.json({
-			"speech": "hihoheho",
-			"displayText": "do we care about this one ?",
-			"source": 'test_2_cahtbot',
-			"data": "data",
-			"contextOut": [
-				{
-					"name":"sealed", 
-					"lifespan":2
-				}
-			],
-			"followupEvent": {
-				"name": "event_find_system_ID",
-				"data":{
-					"system_ID": ""
-				}
-			}
-		});		
-	} // end if
-	//*/
 	
 	
 	
@@ -311,10 +282,11 @@ expressApp.post('/', function (req, res) {
 	// then save all the data to mysql
 	if(req.body.result.action == "win"){
 		
-		//var finalSpeech ="Here is the case id you need :)  ";
+		var finalSpeech ="Here is the case id you need :)  ";
 		var mySQLString = "START TRANSACTION;";
 		var theCase_id;
-
+		var lastHope;
+		
 		var j =0;
 		while (req.body.result.contexts[j].name != "record_context"){
 			j++;
@@ -387,8 +359,10 @@ expressApp.post('/', function (req, res) {
 		
 		console.log(mySQLString);
 		// insert the mySQLString into mysql
-		putInSQL();
-		
+		if(true == true){
+			putInSQL();
+			lastHope = true;
+		}
 		
 		function putInSQL() {
 			mySQLString += "COMMIT;"
@@ -413,7 +387,7 @@ expressApp.post('/', function (req, res) {
 				if (err) throw err;
 				theCase_id = result[1][0].case_id;
 				console.log("le case id est : " + theCase_id);
-				var finalSpeech = "Here is the case id you need :)  " + theCase_id;
+				finalSpeech = finalSpeech + theCase_id;
 				console.log(finalSpeech);
 
 				// delete the case id we just took
@@ -425,6 +399,9 @@ expressApp.post('/', function (req, res) {
 				
 				});		
 			});
+			
+		}
+		if(lastHope == true){
 			return res.json({
 				"speech": finalSpeech,
 				"displayText": finalSpeech,
@@ -432,7 +409,6 @@ expressApp.post('/', function (req, res) {
 				"data": "data",
 			});
 		}
-		
 	}// end if
 	
 	console.log("when do i get here ?");
