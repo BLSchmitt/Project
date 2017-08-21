@@ -16,6 +16,9 @@ expressApp.use(bodyParser.urlencoded({
 expressApp.use(bodyParser.json());
 expressApp.post('/', function (req, res) {
  	
+	var finalSpeech ="";
+
+	
 	//general_fallback_2
 	// redirect the client to what data we still need
 	// if the action is Redirect_client_data 
@@ -311,7 +314,6 @@ expressApp.post('/', function (req, res) {
 	if(req.body.result.action == "win"){
 		
 		var mySQLString = "START TRANSACTION;";
-		var finalSpeech ="";
 		var theCase_id;
 
 		var j =0;
@@ -388,7 +390,6 @@ expressApp.post('/', function (req, res) {
 		// insert the mySQLString into mysql
 		putInSQL();
 		
-	
 		
 		function putInSQL() {
 			mySQLString += "COMMIT;"
@@ -423,17 +424,16 @@ expressApp.post('/', function (req, res) {
 					console.log("Erased");
 					connection.end();
 				});		
-				return res.json({
-					"speech": finalSpeech,
-					"displayText": finalSpeech,
-					"source": 'test_2_cahtbot',
-					"data": "data",
-			   });
 			});
 		}
 	}// end if
 	
-	
+	return res.json({
+		"speech": finalSpeech,
+		"displayText": finalSpeech,
+		"source": 'test_2_cahtbot',
+		"data": "data",
+	});
 	/* to delete
 	return res.json({
 			"speech": "Something is wrong I souldn't go here in the webhook, sorry :)",
