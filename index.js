@@ -426,8 +426,15 @@ expressApp.post('/', function (req, res) {
 
 		}
 		connection.end();
+		
+		return res.json({
+			"speech": "Here is the case id you need :) \n<Case id you need>",
+			"displayText": "Here is the case id you need :) \n<Case id you need>",
+			"source": 'test_2_cahtbot',
+			"data": "data",
+	   });
+		
 	//*/
-	
 	}// end if
 	
 	// to delete
