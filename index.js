@@ -367,6 +367,20 @@ expressApp.post('/', function (req, res) {
 			else{
 				var theName = req.body.result.contexts[j].parameters.name_2;
 			}
+			if(theEmail == ""){
+				theEmail = req.body.result.contexts[j].parameters.email;
+			}
+			if(thePhone_number == ""){
+				thePhone_number = req.body.result.contexts[j].parameters.phone_number;
+			}
+			if (theName == ""){
+				if(req.body.result.contexts[j].parameters.name == ""){
+					theName = req.body.result.contexts[j].parameters.given_name;
+				}
+				else{
+					theName = req.body.result.contexts[j].parameters.name;
+				}
+			}
 		} 
 		
 		var theProblem_descS = JSON.stringify(theProblem_desc);
@@ -374,8 +388,7 @@ expressApp.post('/', function (req, res) {
 		var theEmailS = JSON.stringify(theEmail);
 		var thePhone_numberS = JSON.stringify(thePhone_number);
 		var theSystem_idS = JSON.stringify(theSystem_id);
-		var theStatusS = JSON.stringify(theStatus);
-		
+		var theStatusS = JSON.stringify(theStatus);		
 		var theCase_typeS = JSON.stringify(theCase_type);
 		var theLocationS = JSON.stringify(theLocation);
 				
