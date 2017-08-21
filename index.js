@@ -408,7 +408,7 @@ expressApp.post('/', function (req, res) {
 	}// end if
 	
 	console.log("when do i get here ?");
-	//*
+	/*
 	return res.json({
 		"speech": "Something is wrong I souldn't go here in the webhook, sorry :)",
 		"displayText": "do we care about this one ?",
