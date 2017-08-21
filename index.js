@@ -418,7 +418,7 @@ expressApp.post('/', function (req, res) {
 				if (err) throw err;
 				console.log(result);
 				console.log(result[1])
-				theCase_id = ""+result[1];
+				theCase_id = ""+result[1][0].RowDataPacket.case_id;
 				console.log("le case id est : " + theCase_id);
 			});
 			/*
