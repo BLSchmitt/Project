@@ -420,6 +420,7 @@ expressApp.post('/', function (req, res) {
 				console.log("le case id est : " + theCase_id);
 				finalSpeech = "Here is the case id you need :)  " + theCase_id;
 				console.log(finalSpeech);
+				sendMessage();
 			});
 			
 			/*
@@ -431,18 +432,18 @@ expressApp.post('/', function (req, res) {
 			});
 			//*/
 			
-			console.log("Waaazaaaaa");
-			console.log(""+theCase_id);
 		}
 		
 		connection.end();
-		console.log("i'm here, it's good");
-		return res.json({
-			"speech": finalSpeech,
-			"displayText": finalSpeech,
-			"source": 'test_2_cahtbot',
-			"data": "data",
-	   });
+		
+		function sendMessage(){
+			return res.json({
+				"speech": finalSpeech,
+				"displayText": finalSpeech,
+				"source": 'test_2_cahtbot',
+				"data": "data",
+		   });
+		}
 		
 
 	}// end if
