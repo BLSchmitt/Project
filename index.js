@@ -409,19 +409,19 @@ expressApp.post('/', function (req, res) {
 		function retrieve_id(){
 			//connection.connect();			
 			// retrieve the case id and stock it in theCase_id
-				connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
+			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
 				if (err) throw err;
-				console.log(result);
 				theCase_id = result[1][0].case_id;
 				console.log("le case id est : " + theCase_id);
 				finalSpeech = "Here is the case id you need :)  " + theCase_id;
 				console.log(finalSpeech);
-					
+
 				// delete the case id we just took
 				var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id =" + theCase_id + ";COMMIT;";
 				connection.query(mySQLString_2, function (err, result, fields) {
 					if (err) throw err;
 					console.log("Erased");
+					connection.end();
 				});		
 				return res.json({
 					"speech": finalSpeech,
@@ -431,7 +431,6 @@ expressApp.post('/', function (req, res) {
 			   });
 			});
 		}
-		connection.end();
 	}// end if
 	
 	
