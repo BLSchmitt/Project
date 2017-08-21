@@ -418,6 +418,8 @@ expressApp.post('/', function (req, res) {
 				console.log(result);
 				theCase_id = result[1][0].case_id;
 				console.log("le case id est : " + theCase_id);
+				finalSpeech = "Here is the case id you need :)  " + theCase_id;
+				console.log(finalSpeech);
 			});
 			/*
 			// delete the case id we just took
@@ -427,8 +429,7 @@ expressApp.post('/', function (req, res) {
 				console.log("Erased");
 			});
 			*/
-			finalSpeech = "Here is the case id you need :)  " + theCase_id;
-			console.log(finalSpeech);
+			console.log(""+theCase_id);
 		}
 		
 		connection.end();
