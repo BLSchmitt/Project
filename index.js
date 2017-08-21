@@ -310,12 +310,10 @@ expressApp.post('/', function (req, res) {
 	// then save all the data to mysql
 	if(req.body.result.action == "win"){
 		
-	//*
 		var mySQLString = "START TRANSACTION;";
 		var finalSpeech ="";
 		var theCase_id;
-		// var theKrom = req.body.result.contexts[ji].parameters.krom;
-		// var theNameS = JSON.stringify(theKrom);
+
 		var j =0;
 		while (req.body.result.contexts[j].name != "record_context"){
 			j++;
@@ -363,6 +361,7 @@ expressApp.post('/', function (req, res) {
 			}
 		} 
 		
+		// transform the data into string (in order to use them in mySQL)
 		var theProblem_descS = JSON.stringify(theProblem_desc);
 		var theNameS = JSON.stringify(theName);
 		var theEmailS = JSON.stringify(theEmail);
@@ -388,63 +387,54 @@ expressApp.post('/', function (req, res) {
 		console.log(mySQLString);
 		// insert the mySQLString into mysql
 		putInSQL();
-		// get the id from mySQL and erase it
-		retrieve_id();
+		
+	
 		
 		function putInSQL() {
 			mySQLString += "COMMIT;"
-
 			connection.connect();
 			
 			// push the data in mySQL
 			connection.query(mySQLString, function (error, results, fields) {
 				if (error) throw error;
 				console.log('INSERTED TO MYSQL');
+				// get the id from mySQL and erase it
+				retrieve_id();
 			});
-
 			mySQLString = "";
 			mySQLString = "START TRANSACTION;";
-
 		}
 		
 //		delete from orders where id_users = 1 and id_product = 2
 		function retrieve_id(){
-			
-			//connection.connect();
-			
+			//connection.connect();			
 			// retrieve the case id and stock it in theCase_id
-		//*	connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
+				connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
 				if (err) throw err;
 				console.log(result);
 				theCase_id = result[1][0].case_id;
 				console.log("le case id est : " + theCase_id);
 				finalSpeech = "Here is the case id you need :)  " + theCase_id;
 				console.log(finalSpeech);
+					
+				// delete the case id we just took
+				var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id =" + theCase_id + ";COMMIT;";
+				connection.query(mySQLString_2, function (err, result, fields) {
+					if (err) throw err;
+					console.log("Erased");
+				});		
+				return res.json({
+					"speech": finalSpeech,
+					"displayText": finalSpeech,
+					"source": 'test_2_cahtbot',
+					"data": "data",
+			   });
 			});
-		//*/
-			//*
-			// delete the case id we just took
-			var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id =" + theCase_id + ";COMMIT;";
-			connection.query(mySQLString_2, function (err, result, fields) {
-				if (err) throw err;
-				console.log("Erased");
-			});
-			//*/
-			
 		}
-		
 		connection.end();
-		
-		return res.json({
-			"speech": finalSpeech,
-			"displayText": finalSpeech,
-			"source": 'test_2_cahtbot',
-			"data": "data",
-	   });
-
-		
-
 	}// end if
+	
+	
 	
 	// to delete
 	return res.json({
