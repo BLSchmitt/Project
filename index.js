@@ -304,28 +304,7 @@ expressApp.post('/', function (req, res) {
 	
 	
 	
-	// if there is a data that is wrong in the last confirmation we need first to find the one we want to change.
-	// then we change it then we need to retrigger the big_followup
-	// if action == Big_followup.Big_followup-no
-		// switch
-		// case  req.body.result.resolvedQuery == "name"
-			// then call event_final_correction_name
-		// case req.body.result.resolvedQuery == "email"
-		// case ...
 	
-	
-		// then blabla 
-		// then 
-		/*
-		"followupEvent": {
-			"name": "event_find_system_ID",
-			// that doesn't work i don't know why now 08/08/2017
-			//	 "data": {
-			//			 "truc": theSpeech
-			//	  }
-		}
-		//*/
-	// end if
 	
 	// if the action is win it means the user confirmed we have all the data we need
 	// then save all the data to mysql
@@ -415,12 +394,11 @@ expressApp.post('/', function (req, res) {
 			mySQLString += "COMMIT;"
 
 			connection.connect();
-
+			
+			// push the data in mySQL
 			connection.query(mySQLString, function (error, results, fields) {
-
 				if (error) throw error;
 				console.log('INSERTED TO MYSQL');
-
 			});
 
 			mySQLString = "";
@@ -431,15 +409,15 @@ expressApp.post('/', function (req, res) {
 //		delete from orders where id_users = 1 and id_product = 2
 		function retrieve_id(){
 			
+			connection.connect();
+			
+			var theCase_id;
+			
 			// retrieve the case id and stock it in theCase_id
-			var theCase_id = "";
-			connection.connect(function(err) {
+			con.query("START TRANSACTION;SELECT case_id FROM case_id_test;COMMIT;", function (err, result, fields) {
 				if (err) throw err;
-				con.query("SELECT case_id FROM case_id_test", function (err, result, fields) {
-					if (err) throw err;
-					console.log(result);
-					theCase_id = result;
-				});
+				console.log(result);
+				theCase_id = result;
 			});
 			/*
 			// delete the case id we just took
