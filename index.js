@@ -434,15 +434,14 @@ expressApp.post('/', function (req, res) {
 		"source": 'test_2_cahtbot',
 		"data": "data",
 	});
-	/* to delete
+
 	return res.json({
 			"speech": "Something is wrong I souldn't go here in the webhook, sorry :)",
 			"displayText": "do we care about this one ?",
 			"source": 'test_2_cahtbot',
 			"data": "data",
 	   });
-	 //*/
-    
+
 	
 	// essential
     var request = app.textRequest('', {
