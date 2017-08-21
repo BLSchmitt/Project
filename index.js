@@ -370,14 +370,14 @@ expressApp.post('/', function (req, res) {
 				if (error) throw error;
 				console.log('INSERTED TO MYSQL');
 				// get the id from mySQL and erase it
-				retrieve_id();
+				retrieve_id(lastFunction);
 			});
 			mySQLString = "";
 			mySQLString = "START TRANSACTION;";
 		}
 		
 //		delete from orders where id_users = 1 and id_product = 2
-		function retrieve_id(){
+		function retrieve_id(callback){
 			//connection.connect();			
 			// retrieve the case id and stock it in theCase_id
 			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
@@ -393,9 +393,9 @@ expressApp.post('/', function (req, res) {
 					if (err) throw err;
 					console.log("Erased");
 					connection.end();
-				
 				});		
-			}), lastFunction)
+			});
+			callback();
 		}
 		function lastFunction(){
 			return res.json({
