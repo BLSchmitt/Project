@@ -414,7 +414,7 @@ expressApp.post('/', function (req, res) {
 			var theCase_id;
 			
 			// retrieve the case id and stock it in theCase_id
-			con.query("START TRANSACTION;SELECT case_id FROM case_id_test;COMMIT;", function (err, result, fields) {
+			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test;COMMIT;", function (err, result, fields) {
 				if (err) throw err;
 				console.log(result);
 				theCase_id = result;
@@ -424,7 +424,7 @@ expressApp.post('/', function (req, res) {
 			var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id ="+ theCase_id +";COMMIT;";
 			connection.connect(function(err) {
 				if (err) throw err;
-				con.query(mySQLString_2, function (err, result, fields) {
+				connection.query(mySQLString_2, function (err, result, fields) {
 					if (err) throw err;
 					console.log("erased");
 				});
