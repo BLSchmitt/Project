@@ -359,10 +359,7 @@ expressApp.post('/', function (req, res) {
 		
 		console.log(mySQLString);
 		// insert the mySQLString into mysql
-		if(true == true){
-			putInSQL();
-			lastHope = true;
-		}
+		putInSQL();
 		
 		function putInSQL() {
 			mySQLString += "COMMIT;"
@@ -373,7 +370,7 @@ expressApp.post('/', function (req, res) {
 				if (error) throw error;
 				console.log('INSERTED TO MYSQL');
 				// get the id from mySQL and erase it
-				retrieve_id();
+				retrieve_id(lastFunction);
 			});
 			mySQLString = "";
 			mySQLString = "START TRANSACTION;";
@@ -399,9 +396,8 @@ expressApp.post('/', function (req, res) {
 				
 				});		
 			});
-			
 		}
-		if(lastHope == true){
+		function lastFunction(){
 			return res.json({
 				"speech": finalSpeech,
 				"displayText": finalSpeech,
