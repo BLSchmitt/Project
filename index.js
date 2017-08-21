@@ -417,8 +417,9 @@ expressApp.post('/', function (req, res) {
 			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
 				if (err) throw err;
 				console.log(result);
-				console.log(result[1])
-				theCase_id = ""+result[1][0].RowDataPacket.case_id;
+				console.log(result[1]);
+				console.log(result[1][0]);
+				theCase_id = ""+result[1][0];
 				console.log("le case id est : " + theCase_id);
 			});
 			/*
