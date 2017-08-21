@@ -389,7 +389,7 @@ expressApp.post('/', function (req, res) {
 		});
 		
 		// fill the sql request
-		mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status) VALUES ( ' + theProblem_descS +  ',' + theNameS +  ',' + theEmailS +  ',' + thePhone_numberS +  ',' + theSystem_idS +  ',' + theStatusS +  ');';
+		mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status,case_type,location) VALUES ( ' + theProblem_descS +  ',' + theNameS +  ',' + theEmailS +  ',' + thePhone_numberS +  ',' + theSystem_idS +  ',' + theStatusS +  ',' + theCase_typeS + ',' + theLocation + ');';
 
 		
 		console.log(mySQLString);
