@@ -417,24 +417,17 @@ expressApp.post('/', function (req, res) {
 			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
 				if (err) throw err;
 				console.log(result);
-				console.log(result[1]);
-				console.log(result[1][0].case_id);
-				
-				theCase_id = ""+result[1][0].RowDataPacket;
+				theCase_id = ""+result[1][0].case_id;
 				console.log("le case id est : " + theCase_id);
 			});
-			/*
+
 			// delete the case id we just took
 			var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id ="+ theCase_id +";COMMIT;";
-			connection.connect(function(err) {
+			connection.query(mySQLString_2, function (err, result, fields) {
 				if (err) throw err;
-				connection.query(mySQLString_2, function (err, result, fields) {
-					if (err) throw err;
-					console.log("erased");
-				});
+				console.log("erased");
 			});
 			finalSpeech = "Here is the case id you need :) \n"+theCase_id;
-				//*/
 		}
 		
 		connection.end();
