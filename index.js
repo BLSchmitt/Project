@@ -409,7 +409,7 @@ expressApp.post('/', function (req, res) {
 //		delete from orders where id_users = 1 and id_product = 2
 		function retrieve_id(){
 			
-			connection.connect();
+			//connection.connect();
 			
 			var theCase_id;
 			
