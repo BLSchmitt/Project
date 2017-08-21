@@ -423,25 +423,25 @@ expressApp.post('/', function (req, res) {
 					console.log("Erased");
 					connection.end();
 				});		
-				return res.json({
-					"speech": finalSpeech,
-					"displayText": finalSpeech,
-					"source": 'test_2_cahtbot',
-					"data": "data",
-			   });
 			});
 		}
 	}// end if
 	
+	return res.json({
+		"speech": finalSpeech,
+		"displayText": finalSpeech,
+		"source": 'test_2_cahtbot',
+		"data": "data",
+   });
 	
-	
-	// to delete
+	/* to delete
 	return res.json({
 			"speech": "Something is wrong I souldn't go here in the webhook, sorry :)",
 			"displayText": "do we care about this one ?",
 			"source": 'test_2_cahtbot',
 			"data": "data",
 	   });
+	 //*/
     
 	
 	// essential
