@@ -421,6 +421,7 @@ expressApp.post('/', function (req, res) {
 				finalSpeech = "Here is the case id you need :)  " + theCase_id;
 				console.log(finalSpeech);
 			});
+			
 			/*
 			// delete the case id we just took
 			var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id ="+ theCase_id +";COMMIT;";
@@ -428,12 +429,14 @@ expressApp.post('/', function (req, res) {
 				if (err) throw err;
 				console.log("Erased");
 			});
-			*/
+			//*/
+			
+			console.log("Waaazaaaaa");
 			console.log(""+theCase_id);
 		}
 		
 		connection.end();
-		
+		console.log("i'm here, it's good");
 		return res.json({
 			"speech": finalSpeech,
 			"displayText": finalSpeech,
