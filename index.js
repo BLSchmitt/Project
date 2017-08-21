@@ -370,7 +370,7 @@ expressApp.post('/', function (req, res) {
 				if (error) throw error;
 				console.log('INSERTED TO MYSQL');
 				// get the id from mySQL and erase it
-				retrieve_id(lastFunction);
+				retrieve_id();
 			});
 			mySQLString = "";
 			mySQLString = "START TRANSACTION;";
@@ -395,7 +395,7 @@ expressApp.post('/', function (req, res) {
 					connection.end();
 				
 				});		
-			});
+			}), lastFunction)
 		}
 		function lastFunction(){
 			return res.json({
