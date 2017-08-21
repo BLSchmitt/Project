@@ -418,8 +418,8 @@ expressApp.post('/', function (req, res) {
 				if (err) throw err;
 				console.log(result);
 				console.log(result[1]);
-				console.log(result[1][0]);
-				theCase_id = ""+result[1][0];
+				console.log(result[1].case_id);
+				theCase_id = ""+result[1];
 				console.log("le case id est : " + theCase_id);
 			});
 			/*
