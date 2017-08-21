@@ -406,7 +406,9 @@ expressApp.post('/', function (req, res) {
 
 		
 		console.log(mySQLString);
+		// insert the mySQLString into mysql
 		putInSQL();
+		// get the id from mySQL and erase it
 		retrieve_id();
 		
 		function putInSQL() {
@@ -428,11 +430,29 @@ expressApp.post('/', function (req, res) {
 		
 //		delete from orders where id_users = 1 and id_product = 2
 		function retrieve_id(){
+			
+			// retrieve the case id and stock it in theCase_id
 			var theCase_id = "";
+			con.connect(function(err) {
+				if (err) throw err;
+				con.query("SELECT case_id FROM case_id_test", function (err, result, fields) {
+					if (err) throw err;
+					console.log(result);
+					theCase_id = result;
+				});
+			});
+			/*
+			// delete the case id we just took
 			var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id ="+ theCase_id +";COMMIT;";
-			
+			con.connect(function(err) {
+				if (err) throw err;
+				con.query(mySQLString_2, function (err, result, fields) {
+					if (err) throw err;
+					console.log("erased");
+				});
+			});
 			finalSpeech = "Here is the case id you need :) \n"+theCase_id;
-			
+				//*/
 		}
 		
 		connection.end();
@@ -444,7 +464,7 @@ expressApp.post('/', function (req, res) {
 			"data": "data",
 	   });
 		
-	//*/
+
 	}// end if
 	
 	// to delete
