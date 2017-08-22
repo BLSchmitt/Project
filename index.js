@@ -424,6 +424,9 @@ expressApp.post('/', function (req, res) {
 		
 	}// end if
 	
+	console.log("when did i got out ?");
+	
+	
 	/*
 	return res.json({
 		"speech": "Something is wrong I souldn't go here in the webhook, sorry :)",
@@ -432,6 +435,9 @@ expressApp.post('/', function (req, res) {
 		"data": "data",
    });
 	//*/
+	
+	
+	
 	
 	// essential
     var request = app.textRequest('', {
