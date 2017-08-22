@@ -401,18 +401,19 @@ expressApp.post('/', function (req, res) {
 						return;
 					}
 					console.log("Erased");
-					connection.end();
+					
+					return res.json({
+						"speech": finalSpeech,
+						"displayText": finalSpeech,
+						"source": 'test_2_cahtbot',
+						"data": "data",
+					});
 				});		
 			});
 			finalFunction();
 		}
 		function finalFunction() {
-			return res.json({
-				"speech": finalSpeech,
-				"displayText": finalSpeech,
-				"source": 'test_2_cahtbot',
-				"data": "data",
-			});
+			connection.end();
 		}
 	}// end if
 	
