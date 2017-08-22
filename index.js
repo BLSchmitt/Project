@@ -368,6 +368,8 @@ expressApp.post('/', function (req, res) {
 			// push the data in mySQL
 			connection.query(mySQLString, function (error, results, fields) {
 				if (error){
+						console.log("er while sending the data");
+
 						throw error;
 						return;
 					}
@@ -385,6 +387,7 @@ expressApp.post('/', function (req, res) {
 			// retrieve the case id and stock it in theCase_id
 			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
 				if (err){
+						console.log("er while retrieving the data");
 						throw err;
 						return;
 					}
@@ -397,22 +400,17 @@ expressApp.post('/', function (req, res) {
 				var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id =" + theCase_id + ";COMMIT;";
 				connection.query(mySQLString_2, function (err, result, fields) {
 					if (err){
+						console.log("er while deleting the data");
 						throw err;
 						return;
 					}
 					console.log("Erased");
-					
-					return res.json({
-						"speech": finalSpeech,
-						"displayText": finalSpeech,
-						"source": 'test_2_cahtbot',
-						"data": "data",
-					});
 					finalFunction();
 				});		
 			});
 		}
 		function finalFunction() {
+			console.log("connection ended");
 			connection.end();
 		}
 	}// end if
