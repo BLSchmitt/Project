@@ -439,12 +439,13 @@ expressApp.post('/', function (req, res) {
     });
     
     request.on('response', function(response) {
-		console.log("when do i get here ?");
+		console.log("when do i get here ? in the response");
         console.log(response);
         res.send(response);
     });
 
     request.on('error', function(error) {
+		console.log("when do i get here ? in the error");
         console.log(error);
         res.send(error);
     });
