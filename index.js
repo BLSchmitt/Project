@@ -408,9 +408,9 @@ expressApp.post('/', function (req, res) {
 						"source": 'test_2_cahtbot',
 						"data": "data",
 					});
+					finalFunction();
 				});		
 			});
-			finalFunction();
 		}
 		function finalFunction() {
 			connection.end();
