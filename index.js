@@ -17,6 +17,179 @@ expressApp.use(bodyParser.json());
 expressApp.post('/', function (req, res) {
  	
 	
+	// MySQL
+	// if the action is win it means the user confirmed we have all the data we need
+	// then save all the data to mysql
+	if(req.body.result.action == "win"){
+		
+		var finalSpeech ="Here is the case id you need :)  ";
+		var mySQLString = "START TRANSACTION;";
+		var theCase_id;
+		var lastHope;
+		
+		var j =0;
+		while (req.body.result.contexts[j].name != "record_context"){
+			j++;
+		}
+		
+		// store the data
+		var theStatus = req.body.result.contexts[j].parameters.status;
+		var theLocation = req.body.result.contexts[j].parameters.location;
+		var theCase_type = req.body.result.contexts[j].parameters.case_type;
+		var theProblem_desc = req.body.result.contexts[j].parameters.problem_desc;
+		var theSystem_id = req.body.result.contexts[j].parameters.system_id;
+		
+		if( req.body.result.contexts[j].parameters.name_2 == undefined ){			
+			var theEmail = req.body.result.contexts[j].parameters.email;
+			var thePhone_number = req.body.result.contexts[j].parameters.phone_number;
+			if(req.body.result.contexts[j].parameters.name == ""){
+				var theName = req.body.result.contexts[j].parameters.given_name;
+			}
+			else{
+				var theName = req.body.result.contexts[j].parameters.name;
+			}
+		}
+		else{
+			var theEmail = req.body.result.contexts[j].parameters.email_2;
+			var thePhone_number = req.body.result.contexts[j].parameters.phone_number_2;
+			if(req.body.result.contexts[j].parameters.name_2 == ""){
+				var theName = req.body.result.contexts[j].parameters.given_name_2;
+			}
+			else{
+				var theName = req.body.result.contexts[j].parameters.name_2;
+			}
+			if(theEmail == ""){
+				theEmail = req.body.result.contexts[j].parameters.email;
+			}
+			if(thePhone_number == ""){
+				thePhone_number = req.body.result.contexts[j].parameters.phone_number;
+			}
+			if (theName == ""){
+				if(req.body.result.contexts[j].parameters.name == ""){
+					theName = req.body.result.contexts[j].parameters.given_name;
+				}
+				else{
+					theName = req.body.result.contexts[j].parameters.name;
+				}
+			}
+		} 
+		
+		// transform the data into string (in order to use them in mySQL)
+		var theProblem_descS = JSON.stringify(theProblem_desc);
+		var theNameS = JSON.stringify(theName);
+		var theEmailS = JSON.stringify(theEmail);
+		var thePhone_numberS = JSON.stringify(thePhone_number);
+		var theSystem_idS = JSON.stringify(theSystem_id);
+		var theStatusS = JSON.stringify(theStatus);		
+		var theCase_typeS = JSON.stringify(theCase_type);
+		var theLocationS = JSON.stringify(theLocation);
+				
+		// connect to the database
+		var connection = mysql.createConnection({
+			host: '41.185.27.253',
+			user: 'iot_Admin',
+			password: '<r0(k>IOT',
+			database: 'IOT',
+			multipleStatements: true
+		});
+		
+		// fill the sql request
+		mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status,case_type,location) VALUES ( ' + theProblem_descS +  ',' + theNameS +  ',' + theEmailS +  ',' + thePhone_numberS +  ',' + theSystem_idS +  ',' + theStatusS +  ',' + theCase_typeS + ',' + theLocationS + ');';
+
+		
+		console.log(mySQLString);
+		// insert the mySQLString into mysql
+		putInSQL();
+		
+		function putInSQL() {
+			mySQLString += "COMMIT;"
+			connection.connect();
+			
+			// push the data in mySQL
+			connection.query(mySQLString, function (error, results, fields) {
+				if (error){
+						console.log("er while sending the data");
+						throw error;
+						return;
+					}
+				console.log('INSERTED TO MYSQL');
+				// get the id from mySQL and erase it
+				retrieve_id();
+			});
+			mySQLString = "";
+			mySQLString = "START TRANSACTION;";
+		}
+		
+//		delete from orders where id_users = 1 and id_product = 2
+		function retrieve_id(){
+			//connection.connect();			
+			// retrieve the case id and stock it in theCase_id
+			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
+				if (err){
+						console.log("er while retrieving the data");
+						throw err;
+						return;
+					}
+				theCase_id = result[1][0].case_id;
+				console.log("le case id est : " + theCase_id);
+				finalSpeech = finalSpeech + theCase_id;
+				console.log(finalSpeech);
+
+				// delete the case id we just took
+				var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id =" + theCase_id + ";COMMIT;";
+				connection.query(mySQLString_2, function (err, result, fields) {
+					if (err){
+						console.log("er while deleting the data");
+						throw err;
+						return;
+					}
+					console.log("Erased");
+					finalFunction();
+				});		
+			});
+		}
+		function finalFunction() {
+			console.log("connection ended");
+			connection.end();
+			return res.json({
+				"speech": finalSpeech,
+				"displayText": finalSpeech,
+				"source": 'test_2_cahtbot',
+				"data": "data",
+		   });
+			// essential
+			var request = app.textRequest('', {
+				sessionId: '94977757-7fc6-4c81-936a-b1fcfaaf9a7f'
+			});
+
+			request.on('response', function(response) {
+				console.log("when do i get here ? in the response");
+				console.log(response);
+				res.send(response);
+			});
+
+			request.on('error', function(error) {
+				console.log("when do i get here ? in the error");
+				console.log(error);
+				res.send(error);
+			});
+
+			request.end();
+		})
+
+		var server = expressApp.listen(process.env.PORT || 5000, function () {
+			var port = server.address().port;
+			console.log("Express is working on port " + port);
+			console.log("Fin du programme ");
+		});
+		}
+		
+	// should wait until I have executed my script
+	// then leave this if case.
+		
+	}// end if
+	else{
+	
 	//general_fallback_2
 	// redirect the client to what data we still need
 	// if the action is Redirect_client_data 
@@ -274,159 +447,6 @@ expressApp.post('/', function (req, res) {
 		});
 	} // end if
 	
-	
-	
-	
-	// MySQL
-	// if the action is win it means the user confirmed we have all the data we need
-	// then save all the data to mysql
-	if(req.body.result.action == "win"){
-		
-		var finalSpeech ="Here is the case id you need :)  ";
-		var mySQLString = "START TRANSACTION;";
-		var theCase_id;
-		var lastHope;
-		
-		var j =0;
-		while (req.body.result.contexts[j].name != "record_context"){
-			j++;
-		}
-		
-		// store the data
-		var theStatus = req.body.result.contexts[j].parameters.status;
-		var theLocation = req.body.result.contexts[j].parameters.location;
-		var theCase_type = req.body.result.contexts[j].parameters.case_type;
-		var theProblem_desc = req.body.result.contexts[j].parameters.problem_desc;
-		var theSystem_id = req.body.result.contexts[j].parameters.system_id;
-		
-		if( req.body.result.contexts[j].parameters.name_2 == undefined ){			
-			var theEmail = req.body.result.contexts[j].parameters.email;
-			var thePhone_number = req.body.result.contexts[j].parameters.phone_number;
-			if(req.body.result.contexts[j].parameters.name == ""){
-				var theName = req.body.result.contexts[j].parameters.given_name;
-			}
-			else{
-				var theName = req.body.result.contexts[j].parameters.name;
-			}
-		}
-		else{
-			var theEmail = req.body.result.contexts[j].parameters.email_2;
-			var thePhone_number = req.body.result.contexts[j].parameters.phone_number_2;
-			if(req.body.result.contexts[j].parameters.name_2 == ""){
-				var theName = req.body.result.contexts[j].parameters.given_name_2;
-			}
-			else{
-				var theName = req.body.result.contexts[j].parameters.name_2;
-			}
-			if(theEmail == ""){
-				theEmail = req.body.result.contexts[j].parameters.email;
-			}
-			if(thePhone_number == ""){
-				thePhone_number = req.body.result.contexts[j].parameters.phone_number;
-			}
-			if (theName == ""){
-				if(req.body.result.contexts[j].parameters.name == ""){
-					theName = req.body.result.contexts[j].parameters.given_name;
-				}
-				else{
-					theName = req.body.result.contexts[j].parameters.name;
-				}
-			}
-		} 
-		
-		// transform the data into string (in order to use them in mySQL)
-		var theProblem_descS = JSON.stringify(theProblem_desc);
-		var theNameS = JSON.stringify(theName);
-		var theEmailS = JSON.stringify(theEmail);
-		var thePhone_numberS = JSON.stringify(thePhone_number);
-		var theSystem_idS = JSON.stringify(theSystem_id);
-		var theStatusS = JSON.stringify(theStatus);		
-		var theCase_typeS = JSON.stringify(theCase_type);
-		var theLocationS = JSON.stringify(theLocation);
-				
-		// connect to the database
-		var connection = mysql.createConnection({
-			host: '41.185.27.253',
-			user: 'iot_Admin',
-			password: '<r0(k>IOT',
-			database: 'IOT',
-			multipleStatements: true
-		});
-		
-		// fill the sql request
-		mySQLString += 'INSERT INTO case_files (description,name,email,contact_number,systemID,status,case_type,location) VALUES ( ' + theProblem_descS +  ',' + theNameS +  ',' + theEmailS +  ',' + thePhone_numberS +  ',' + theSystem_idS +  ',' + theStatusS +  ',' + theCase_typeS + ',' + theLocationS + ');';
-
-		
-		console.log(mySQLString);
-		// insert the mySQLString into mysql
-		putInSQL();
-		
-		function putInSQL() {
-			mySQLString += "COMMIT;"
-			connection.connect();
-			
-			// push the data in mySQL
-			connection.query(mySQLString, function (error, results, fields) {
-				if (error){
-						console.log("er while sending the data");
-						throw error;
-						return;
-					}
-				console.log('INSERTED TO MYSQL');
-				// get the id from mySQL and erase it
-				retrieve_id();
-			});
-			mySQLString = "";
-			mySQLString = "START TRANSACTION;";
-		}
-		
-//		delete from orders where id_users = 1 and id_product = 2
-		function retrieve_id(){
-			//connection.connect();			
-			// retrieve the case id and stock it in theCase_id
-			connection.query("START TRANSACTION;SELECT case_id FROM case_id_test limit 1;COMMIT;", function (err, result, fields) {
-				if (err){
-						console.log("er while retrieving the data");
-						throw err;
-						return;
-					}
-				theCase_id = result[1][0].case_id;
-				console.log("le case id est : " + theCase_id);
-				finalSpeech = finalSpeech + theCase_id;
-				console.log(finalSpeech);
-
-				// delete the case id we just took
-				var mySQLString_2 = "START TRANSACTION;delete from case_id_test where case_id =" + theCase_id + ";COMMIT;";
-				connection.query(mySQLString_2, function (err, result, fields) {
-					if (err){
-						console.log("er while deleting the data");
-						throw err;
-						return;
-					}
-					console.log("Erased");
-					finalFunction();
-				});		
-			});
-		}
-		function finalFunction() {
-			console.log("connection ended");
-			connection.end();
-			return res.json({
-				"speech": "whalalalalallalaallala",
-				"displayText": "wololé",
-				"source": 'test_2_cahtbot',
-				"data": "data",
-		   });
-		}
-		
-	// should wait until I have executed my script
-	// then leave this if case.
-		
-	}// end if
-	
-	console.log("when did i got out ?");
-	
-	
 	/*
 	return res.json({
 		"speech": "Something is wrong I souldn't go here in the webhook, sorry :)",
@@ -435,9 +455,6 @@ expressApp.post('/', function (req, res) {
 		"data": "data",
    });
 	//*/
-	
-	
-	
 	
 	// essential
     var request = app.textRequest('', {
@@ -464,3 +481,4 @@ var server = expressApp.listen(process.env.PORT || 5000, function () {
     console.log("Express is working on port " + port);
     console.log("Fin du programme ");
 });
+}
