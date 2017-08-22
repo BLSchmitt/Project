@@ -25,7 +25,6 @@ expressApp.post('/', function (req, res) {
 		var finalSpeech ="Here is the case id you need :)  ";
 		var mySQLString = "START TRANSACTION;";
 		var theCase_id;
-		var lastHope;
 		
 		var j =0;
 		while (req.body.result.contexts[j].name != "record_context"){
