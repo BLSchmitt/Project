@@ -369,7 +369,6 @@ expressApp.post('/', function (req, res) {
 			connection.query(mySQLString, function (error, results, fields) {
 				if (error){
 						console.log("er while sending the data");
-
 						throw error;
 						return;
 					}
@@ -419,9 +418,12 @@ expressApp.post('/', function (req, res) {
 				"data": "data",
 		   });
 		}
+		
+	// should wait until I have executed my script
+	// then leave this if case.
+		
 	}// end if
 	
-	console.log("when do i get here ?");
 	/*
 	return res.json({
 		"speech": "Something is wrong I souldn't go here in the webhook, sorry :)",
@@ -437,6 +439,7 @@ expressApp.post('/', function (req, res) {
     });
     
     request.on('response', function(response) {
+		console.log("when do i get here ?");
         console.log(response);
         res.send(response);
     });
