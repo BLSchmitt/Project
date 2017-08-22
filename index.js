@@ -412,6 +412,12 @@ expressApp.post('/', function (req, res) {
 		function finalFunction() {
 			console.log("connection ended");
 			connection.end();
+			return res.json({
+				"speech": "whalalalalallalaallala",
+				"displayText": "wololé",
+				"source": 'test_2_cahtbot',
+				"data": "data",
+		   });
 		}
 	}// end if
 	
